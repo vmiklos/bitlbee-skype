@@ -1,6 +1,11 @@
 = Skype plugin for BitlBee
 Miklos Vajna <vmiklos-at-vmiklos-dot-hu>
 
+NOTE: This page is here only for historical reasons. You probably want
+to have a look at
+link:http://bugs.bitlbee.org/bitlbee/changeset/devel%2C802[the
+merged code].
+
 == Status
 
 [quote, Wilmer van der Gaast (author of BitlBee)]
@@ -126,7 +131,7 @@ $ cd Skype4Py-x.x.x.x
   not matter):
 
 ----
-$ wget http://vmiklos.hu/project/bitlbee-skype/bitlbee-skype-@VERSION@.tar.gz
+$ wget https://github.com/downloads/vmiklos/bitlbee-skype/bitlbee-skype-@VERSION@.tar.gz
 $ tar xf bitlbee-skype-@VERSION@.tar.gz
 $ cd bitlbee-skype-@VERSION@
 ----
@@ -392,7 +397,7 @@ You can reach some screenshots link:shot[here].
 == Additional resources
 
 You can reach the Changelog link:Changelog[here], and a gitweb interface
-http://vmiklos.hu/gitweb/?p=bitlbee-skype.git[here].
+https://github.com/vmiklos/bitlbee-skype[here].
 
 The Skype API documentation is
 http://developer.skype.com/resources/public_api_ref.zip[here] if you're
