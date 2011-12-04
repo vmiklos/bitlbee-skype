@@ -21,6 +21,6 @@ python skyped.py -n -d
 
 To get the code directly from git, you need:
 
-git clone git://vmiklos.hu/bitlbee-skype
+git clone git://github.com/vmiklos/bitlbee-skype.git
 cd bitlbee-skype
 make autogen
