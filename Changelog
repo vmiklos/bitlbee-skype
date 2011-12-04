@@ -1,0 +1,3459 @@
+commit 6cb29b607702f7b5ce3e7e24f1cd30e9d001db5c
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Mon Dec 5 00:32:53 2011 +0100
+
+    mirror public_api_ref
+
+commit 9ef5dd9ff6927c7a08218e1bad3f812b6dd948e4
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Mon Dec 5 00:29:04 2011 +0100
+
+    move to github
+
+commit 53c9732effc627bf63fdf90616a5f8f5af2d04bb
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Tue Apr 12 01:32:02 2011 +0200
+
+    drop images symlink, images are embedded recently
+
+commit 5b29d6d57fb4659c440ecc57afaab6002f27a0d5
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Tue Apr 12 01:26:09 2011 +0200
+
+    add back optional gobject support
+    
+    on windows socket/threading is needed as there are no gobject, but those
+    directly on linux would be suboptimal
+
+commit 974c6b97b449a22136f46bc3bc583b2aa238d0cd
+Author: Philippe Crama <pcfeb0009@gmx.com>
+Date:   Mon Feb 7 21:01:53 2011 +0100
+
+    Always use UTF-8 encoding when dealing with BitlBee
+    
+    BitlBee internally always uses UTF-8 (see initialization of
+    irc->iconv and irc->oconv in set_eval_charset in irc.c of
+    BitlBee's source and their usage in eg irc_vawrite in the
+    same file; confirmed on #bitlbee), so it makes no sense to
+    either get an encoding from the current locale or to make it
+    a runtime setting.
+
+commit aa658c50d4ea8b52cabc08ab7e7f1b7bc6e9976f
+Author: Philippe Crama <pcfeb0009@gmx.com>
+Date:   Mon Feb 7 21:00:27 2011 +0100
+
+    Remove useless/misleading comment
+
+commit 94add115eafa5b76d4829b3dc3786c9947caaab9
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Fri Jan 21 15:30:11 2011 +0100
+
+    Add a 'test' target to the toplevel Makefile
+
+commit cf3142149a9fcd696ecccbc6cf22106f384abb47
+Author: Philippe Crama <pcfeb0009@gmx.com>
+Date:   Fri Jan 7 21:07:04 2011 +0100
+
+    Avoid debugging output charset problems crashing skyped.py
+    
+    When using irssi in an LC_CTYPE=ISO-8859-1 terminal (thus
+    /set charset iso-8859-1 for irssi, set charset iso-8859-1 for
+    bitlbee and no recode_out_default_charset set for irssi) and
+    skyped.py in a Windows console window (CP1252?), sending a
+    message with a &eacute; (the character, not the HTML entity)
+    crashes the server because in its debugging output it tries to
+    print the UTF-8 equivalent intepreted as CP1252 code points.
+    
+    I do not think that the "if options.log: ..." code just below the
+    patch needs the same treatment as the worst that can happen is
+    that some messages in the log file will be garbled.  Since I do
+    not use/test that code path, I didn't touch it.
+
+commit c12114ac2f4b7a62322b34ca8655f950fc1d9915
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Wed Jan 5 03:09:58 2011 +0100
+
+    t/livetest-bitlbee.sh: ps is posix, /proc is not
+
+commit 00685e512a07bc40ce1c10a21b75e9495c06d1ee
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Tue Jan 4 02:15:48 2011 +0100
+
+    Add an AUTHORS file
+
+commit 53d37781fcdad1f25a0d6615788af30addce77e6
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Tue Jan 4 02:00:00 2011 +0100
+
+    Make tests a bit more robust
+    
+    Sometimes skyped exits on startup because of the failure of some
+    underlying C lib (ie we get no expections), that's not something I want
+    to care about.
+
+commit 3e424cc9d160fc77a1c02f4c3c66b13411d5c7d4
+Author: Philippe Crama <pcfeb0009@gmx.com>
+Date:   Mon Jan 3 21:37:30 2011 +0100
+
+    Add TUNNELED_MODE and TUNNEL_SCRIPT environment variables
+    
+    When TUNNELED_MODE=yes, TUNNEL_SCRIPT (when set) is used to establish a
+    tunnel.  This allows to run skyped.py on a differnt host than the skype.c
+    bitlbee plugin.
+
+commit 1efff2eb9118762d439f43c23e92230d6e04b366
+Author: Philippe Crama <pcfeb0009@gmx.com>
+Date:   Mon Jan 3 21:31:36 2011 +0100
+
+    First try absolute path, then look for basename in PATH
+
+commit 38dc41efc908e886f9acd47ebeaa721c71eb27b2
+Author: Philippe Crama <pcfeb0009@gmx.com>
+Date:   Mon Jan 3 21:24:37 2011 +0100
+
+    Replace unportable 'sed -i' by perl invocation
+
+commit dd609e5949ae9c2c978782552a5cd5c873721504
+Author: Philippe Crama <pcfeb0009@gmx.com>
+Date:   Mon Jan 3 21:18:47 2011 +0100
+
+    Absolute path to env is standardized -> make invocation portable
+
+commit 0d5305a7e8b08df61487759f0b723dc061895f55 (tags/0.9.0)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Mon Jan 3 04:36:37 2011 +0100
+
+    update version
+
+commit 6f5fb3b8ea9277d27000f9f3cc5e5c7eb9d9fbec (tags/0.9.0~1)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Mon Jan 3 04:30:54 2011 +0100
+
+    updates for 0.9.0
+
+commit cc6e2b4ab593bb40b42644554998da5db09fb50c (tags/0.9.0~2)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Mon Jan 3 04:19:51 2011 +0100
+
+    Document that group support is ready
+
+commit a98a9d3cba7b0be477d10dbd6ce46b6ce8ac01fd (tags/0.9.0~3)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Mon Jan 3 04:13:25 2011 +0100
+
+    checkpatch
+
+commit bdbfc18eeb8e8881d27a6ac4096148d27d77e920 (tags/0.9.0~4)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Mon Jan 3 04:13:00 2011 +0100
+
+    skype_add_buddy: handle the case when /invite is used on a new group
+
+commit 2d0dc2afc160e86ed9209cef82cf801cd922ef4a (tags/0.9.0~5)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Mon Jan 3 03:47:40 2011 +0100
+
+    Make /invite work for existing groups
+
+commit 3e0464a2f5604cf8426015d81fc1e1cf68204fa0 (tags/0.9.0~6)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Mon Jan 3 03:22:18 2011 +0100
+
+    Unused parameters
+
+commit 9990ead8ddfaf1ca207d8498cff8b5d5f589c822 (tags/0.9.0~7)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Mon Jan 3 02:57:01 2011 +0100
+
+    Add support for fetching group changes on the fly
+    
+    So in case a user was not part of a group and it becomes (using Skype
+    UI), then BitlBee is now aware of this.
+    
+    NOTE: current it seems the Skype part of this is broken. Use case: adding a
+    user to group #16 which already has a user.
+    
+    << GROUP 16 NROFUSERS 2
+    >> GET GROUP 16 NROFUSERS
+    << GROUP 16 NROFUSERS 0
+    
+    So it notifies about the number of users changed but I can't query the user
+    list as the number of users is then 0 - till Skype is not restarted.
+
+commit 188eddb1cce5d819d5d8cbe9f2f9a6cc68338e8b (tags/0.9.0~8)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sun Jan 2 03:41:04 2011 +0100
+
+    checkpatch fixes
+
+commit 9b9086f8e3ba13a6c46ab4a0eb31d05a834fe063 (tags/0.9.0~9)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sun Jan 2 03:29:25 2011 +0100
+
+    Initial support for reading buddy groups
+    
+    What works: if you have a few buddies in <group>, then /j &<group> will
+    show just those buddies.
+    
+    What does not:
+    
+    - If you later move buddies using Skype UI, BitlBee is not yet notified.
+    - You cannot move buddies using /invite yet.
+    
+    What won't work in the near future: only the first group of each buddy
+    is parsed.
+
+commit 47969f8ee7bdcec677d3b503a4bdf33fc8dc9d58 (tags/0.9.0~10)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sun Jan 2 03:02:51 2011 +0100
+
+    Parse the user list of each group
+
+commit 3e84462057277d25fe19f6ae0df2050ca409d0f8 (tags/0.9.0~11)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sat Jan 1 17:55:20 2011 +0100
+
+    Read list of groups on startup
+    
+    This is just the begining, we do not
+    
+    - store it
+    - store the list of users in a group nor the name of the group
+    - track changes after the user logged in
+    - don't write this info
+
+commit b981aa6dd36e04049e6e0b08182d4ed8e8d3aec2 (tags/0.9.0~12)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Wed Dec 29 03:15:54 2010 +0100
+
+    Update doc: skyped on Windows should work now
+
+commit 4debc5f8b4224aa67bd24eeab8df2ba3dfecdc1e (tags/0.9.0~13)
+Author: Philippe Crama <pcfeb0009@gmx.com>
+Date:   Tue Dec 28 22:11:35 2010 +0100
+
+    Contact another bot: echo123 never answers
+    
+    On my setup (Skype 5.0.0.152), echo123 doesn't answer any chat
+    attempts: even if I use the official client, I get no answer, so
+    this test fails but not for a reason linked to the bitlbee-skype
+    plugin.
+
+commit d7ca77ca1d48f640e6c0b510f476caf1762b37fc (tags/0.9.0~14)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Wed Dec 29 02:54:46 2010 +0100
+
+    Update doc: gobject is no longer required.
+
+commit 470b5808c35a89c457572b5de55dc5c4f4fb69ec (tags/0.9.0~15)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Wed Dec 29 02:49:32 2010 +0100
+
+    Clean up some leftover debug messages
+
+commit a6abf65f2837252051a4c445cc32c77ed3eb57d1 (tags/0.9.0~16^2)
+Author: Philippe Crama <pcfeb0009@gmx.com>
+Date:   Tue Dec 28 14:06:16 2010 +0100
+
+    Close connection when going offline
+    
+    When the user disconnects from bitlbee (either by quitting or by
+    logging out "account skype off"), skyped should close its connection
+    and wait for a new connection.
+    
+    This change is useful to make the test cases pass as otherwise,
+    skyped would not notice that the first test was done and that the
+    second test was trying to connect, thus leading to a failure in
+    the second test.
+
+commit 30c713c0d99a76c50124d40f6ad8c7d9a2c39eca (tags/0.9.0~16^2~1)
+Author: Philippe Crama <pcfeb0009@gmx.com>
+Date:   Tue Dec 28 14:04:34 2010 +0100
+
+    Check that connection is still valid before sending/retrying
+    
+    Since another thread might close the socket, make sure after the
+    lock is acquired that the connection is still valid.
+    
+    Add global declaration for completeness
+
+commit 3775d50495fcab69279691f3221b4b027b66a978 (tags/0.9.0~17)
+Author: Laurent Ghigonis <laurent@gouloum.fr>
+Date:   Fri Dec 24 15:58:50 2010 +0100
+
+    Add OpenBSD support
+    
+    it is great !!!  thank you so much :)
+    being able to run skype on a server relieves me from that virtual
+    machine pain :p
+    i run bitbee with your module on my openbsd laptop and it works nicely.
+
+commit 34854304caf36f228c1bad13965bb30cf6897287 (tags/0.9.0~16^2~2)
+Author: unknown <pcfeb0009@gmx.com>
+Date:   Fri Dec 24 13:21:16 2010 +0100
+
+    Add locking to ensure only one thread accesses the socket
+    
+    The Skype API calls the OnNotify callback in a separate thread: see
+    http://skype4py.sourceforge.net/doc/html/Skype4Py.utils.EventHandlingBase-class.html
+    
+    Tested informally (chatting with another person for > 15 min)
+
+commit b642f262fe0be68b06063180faabf3766352db08 (tags/0.9.0~16^2~3)
+Author: Philippe Crama <pcfeb0009@gmx.com>
+Date:   Wed Dec 22 20:08:41 2010 +0100
+
+    Bugfixes: when skipping PINGing bitlbee, update PONG timestamp, watch input socket for exceptional situations
+
+commit 9ff5f94cdb9513d9b1e5628aa25f5d238acb02e0 (tags/0.9.0~16^2~4)
+Author: Philippe Crama <pcfeb0009@gmx.com>
+Date:   Mon Dec 20 21:51:49 2010 +0100
+
+    Make skyped restart itself
+    
+    Now skyped.py detects broken sockets and restarts itself waiting
+    for a new connection: this sould help with passing the tests
+    (see branch NetBSD-test-suite)
+
+commit 4b83e354c0f8ba766735c6f6138662e55d843a88 (tags/0.9.0~16^2~5)
+Author: Philippe Crama <pcfeb0009@gmx.com>
+Date:   Sun Dec 19 21:15:14 2010 +0100
+
+    More debugging ouput to make sure the skype daemon is not dead
+
+commit 6e73a7a1a8daebf64214559abefa4cf46be9f1e3 (tags/0.9.0~16^2~6)
+Author: Philippe Crama <pcfeb0009@gmx.com>
+Date:   Fri Dec 17 21:57:04 2010 +0100
+
+    Remove dependency on gobject and use select standard module
+    
+    This is a restart of the windows-skyped branch based on the updated
+    bitlbee-skype using the builtin SSL libs of Python.
+    
+    This version connects, but hangs for long times... to be continued
+
+commit f6eaec20f6c43c0bb81ab40922e45e7713955511 (tags/0.9.0~18)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Mon Dec 13 04:37:30 2010 +0100
+
+    new testcase
+
+commit 049fe98fb8e8f642f1fabd93a7bf4efa61b29cf7 (tags/0.9.0~19)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Mon Dec 13 03:14:25 2010 +0100
+
+    Drop <3.0 compatibility
+
+commit 3d3b7f459ff62eb63834c46c754345d167f1b349 (tags/0.9.0~20)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Mon Dec 13 03:10:19 2010 +0100
+
+    Adding /ctcp call|hangup support
+
+commit 0bb007f783f02f7384524dd07a4272625019a46d (tags/0.9.0~21)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sat Dec 11 16:16:47 2010 +0100
+
+    Cleanup, now we handle certs generated by openssl-1.0
+
+commit ca2d023d2c846f3d4c6fe0ddef9be8fd2e021d11 (tags/0.9.0~22)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sat Dec 11 16:14:21 2010 +0100
+
+    update README
+
+commit acb2ac1b6be332c6cefffc86581d78e8cbfd99ea (tags/0.9.0~23)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sat Dec 11 16:10:25 2010 +0100
+
+    Use internal ssl module instead of pyopenssl or python-gnutls
+    
+    This results in shorter code and is available on Windows as well.
+
+commit 62d0e459762bd9a3a4ab26258ed2b32c755a5fe3 (tags/0.8.4)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Wed Dec 8 04:13:13 2010 +0100
+
+    updates for 0.8.4
+
+commit 9ef788a43e1b6a4fa0c7884810fee28dc37088e9 (tags/0.8.4~1)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Wed Dec 8 04:21:34 2010 +0100
+
+    silence -Wunused-parameter warnings
+
+commit 801291d852c9b118e0b1ea47123031e0d821d358 (tags/0.8.4~2)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Wed Dec 8 04:05:27 2010 +0100
+
+    t: cleanup
+
+commit c22afc9ca7b6b1856ae6df88cbcb41724be8c6f2 (tags/0.8.4~4)
+Author: Carlo Wood <carlo@alinoe.com>
+Date:   Tue Dec 7 04:17:15 2010 +0100
+
+    Do not crash when failing to connect to skyped
+    
+    Hi,
+    
+    when the skype plugin fails to connect to skyped,
+    it crashes.  Not crashing is nicer, because that
+    results in an neat error message that connecting
+    to the server failed (and subsequent retries).
+    
+    The attached patch fixes this crash.
+
+commit 2eaa7e4e44cfacb650c6f26f917cbc5c76c218e3 (tags/0.8.4~3^2)
+Author: Philippe Crama <pcfeb0009@gmx.com>
+Date:   Sun Dec 5 21:44:19 2010 +0100
+
+    Minor modifications to make it compile/run under NetBSD/pkgsrc
+
+commit 9d8b0b030445d040ce7dc697fef66b97b04cf0ae (tags/0.8.4~5)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Mon Nov 29 23:40:54 2010 +0100
+
+    configure: use python2.7
+
+commit d9ba476a131dc1a584547461e3368a94cf77d5f6 (tags/0.8.4~6)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Wed Nov 17 12:29:33 2010 +0100
+
+    update README for bitlbee-3.0
+
+commit 1a034f59ea76ed1fca25c9e7c474e220cda7e6dd (tags/0.8.4~7)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Mon Oct 25 01:14:27 2010 +0200
+
+    skyped: change it to python2.7 just in case python would be python3k already
+
+commit 51840ca281090d32c5032ae56cd42641d425c832 (tags/0.8.4~8)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Wed Aug 18 14:52:15 2010 +0200
+
+    typo
+
+commit 089803f1ab5f6fdf25a66475373b443e1940f6d3 (tags/0.8.4~9)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Wed Aug 18 14:47:04 2010 +0200
+
+    add tip on how to avoid generating ssl certs
+    
+    can be useful for openssl-1.0 users where i don't know what cmdline to
+    suggest atm
+
+commit b51b2adb87c5b62a6cd8cc4622b36fd9994b5f54 (tags/0.8.4~10)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Tue Aug 10 02:05:30 2010 +0200
+
+    merge skyped default config patch from Debian
+
+commit 52d73045c799757be4bef02cca5471e3d1a1c347 (tags/0.8.4~11)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Tue Aug 10 02:03:52 2010 +0200
+
+    merge autogen cleanup patch from Debian
+
+commit 9f6077dbdbd6647c96d3e887c0c278b22c58d7b4 (tags/0.8.4~12)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Tue Aug 3 15:42:15 2010 +0200
+
+    t/livetest-bitlbee: redirect bitlbee's stderr to a logfile, not useful to see that as long as it works
+
+commit 6769d3558c9487b34c30882efa10718f723e77f2 (tags/0.8.3)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Tue Aug 3 14:39:52 2010 +0200
+
+    build for <1.3
+
+commit 17dd11f101a8b6520c795c9d9bbe41e90309f55b (tags/0.8.3~1)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Tue Aug 3 14:31:18 2010 +0200
+
+    updates for 0.8.3
+
+commit 548665b58a7630a63ad2324b0db068adb2ba6199 (tags/0.8.3~2)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Tue Aug 3 14:30:04 2010 +0200
+
+    checkpatch fix
+
+commit 6a83d180038e8d4b574edce52f1565cb66dffc91 (tags/0.8.3~3)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Tue Aug 3 13:57:48 2010 +0200
+
+    fix up testcases for ui-fix
+
+commit 942abafb3e25dcc77ded29249c1b1650ebd38c25 (tags/0.8.3~4)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Tue Aug 3 13:57:08 2010 +0200
+
+    tests: don't generate new certs all the time if not needed
+    
+    this is a hack, looks like openssl-1.0 generates something which is not
+    compatible with python-gnutls, let's reuse what we have for now
+
+commit 2de4694294b6b4f03d8a3b047bd3b45c987e3522 (tags/0.8.3~5)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Tue Aug 3 13:13:55 2010 +0200
+
+    remove #if BITLBEE_VERSION_CODE >= BITLBEE_VER(1, 2, 6)
+    
+    that's always true as such macro did not exist before
+
+commit 8c1dc50db5d11d824137442e2d40bcd43a94c1c6 (tags/0.8.3~6)
+Author: Wilmer van der Gaast <wilmer@gaast.net>
+Date:   Tue Aug 3 13:12:59 2010 +0200
+
+    BitlBee 1.3.0 compatibility patch
+
+commit b95843b4b24ecc2ef9a7ec232398cfc39e450f4c (tags/0.8.3~7)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Mon Aug 2 23:54:24 2010 +0200
+
+    update skype api link
+
+commit 1c37b895c431752c340c70fb794a80747a5dff70 (tags/0.8.3~8)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Fri Jun 25 20:39:23 2010 +0200
+
+    Typo fix: --debug was --daemon
+    
+    From: Arthaey Angosii <arthaey@gmail.com>
+
+commit 6680e5d846bd1ee04d101f9063b3c51261fc7b9f (tags/0.8.3~9)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sat May 29 15:38:55 2010 +0200
+
+    doc: 1.2.6 has this BITLBEE_VERSION_CODE macro
+    
+    so hopefully we can stay compatible with it for a long time
+
+commit 2b48fb5a040f9c79980b88035333274f49a3ea19 (tags/0.8.3~10)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sat May 29 15:36:12 2010 +0200
+
+    update bitlbee version
+
+commit c88723878834d3e00244ec771de05fdde8a49909 (tags/0.8.3~11)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Tue Apr 20 00:40:58 2010 +0200
+
+    cosmetics
+
+commit 8d21824d47bbbf4d6af1d31806e680e4e956f9ee (tags/0.8.3~12)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Tue Apr 20 00:27:19 2010 +0200
+
+    doc update, stop recommending 0.5.1
+
+commit b2a64ebe18fa560165cd79f984d5710681f2974d (tags/0.8.3~13)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Tue Apr 20 00:25:33 2010 +0200
+
+    update for 1.2.6
+    
+    also a bit of cleanup. you can still build for 1.2.5 using
+    
+    '-DBITLBEE_VER(a,b,c)'='(((a) << 16) + ((b) << 8) + (c))'
+    
+    if you really want, though.
+
+commit 075acd900533d78ae3f3001f8572e4ec116218ac (tags/0.8.3~14)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sun Apr 18 04:43:47 2010 +0200
+
+    copyright
+
+commit 32fcf1473ed14a55393c89035f990420f16ef0b6 (tags/0.8.2)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Wed Apr 14 02:20:14 2010 +0200
+
+    fix for 1.2.5
+
+commit 4917d48ba9fcac3d80fbe68b065d2c81971fafd5 (tags/0.8.2~1)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Wed Apr 14 02:16:04 2010 +0200
+
+    updates for 0.8.2
+
+commit 7d8622bb9c7a9279d99fb2ff51fe58c3260d4ac1 (tags/0.8.2~2)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Wed Apr 14 01:58:36 2010 +0200
+
+    include mood text in whois output as well
+
+commit e522066e363c7d91d09f88fb60d5fabdef2d93ea (tags/0.8.2~3)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Wed Apr 14 01:26:02 2010 +0200
+
+    add new setting to show mood texts
+
+commit 6880d1fe7288faf51917e4e4df6b88574d0e38e6 (tags/0.8.2~4)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Wed Apr 14 00:55:42 2010 +0200
+
+    use imcb_chat_name_hint() if it's available
+
+commit 538025c1e85d9790ec322bde7fa8e8c28d438788 (tags/0.8.2~5)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Mon Apr 12 17:09:49 2010 +0200
+
+    skyped: use os.path.expanduser for file paths in config
+    
+    Requested-by: ilf <ilf@gmx.net>
+
+commit bf28b98b0a0173bce220bd57127229b5519cb9dd (tags/0.8.2~6)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Mon Apr 12 17:27:35 2010 +0200
+
+    use fake user/pass
+    
+    the only problem that can happen this case is that we can talk to
+    ourselves, but that's not a big problem.
+
+commit 03b6a42161caa02bb1f2735eb1e915db7848964b (tags/0.8.2~7)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Mon Apr 12 17:27:14 2010 +0200
+
+    tests: use the echo123 test account instead of an external one
+    
+    now that we have a config option allowing to do so, make use of it, it's
+    more reliable
+
+commit 9268ef6f560dda076778031b4bf1f42872429a2b (tags/0.8.2~8)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Wed Apr 7 19:26:39 2010 +0200
+
+    Revert "checkpatch fixes"
+    
+    This reverts commit a65ec8c459813c84ed9ca57872b0df9add83a049 (tags/0.8.2~14).
+    
+    17:35 < macmaN> vmiklos: im getting all my groupchat messages as private querys now
+    17:35 < macmaN> the other direction works
+    18:48 < macmaN> vmiklos: i've verified it, i went back before that commit and group chats work again
+
+commit cda5ffbad11650d9ed794e56b693fef45fe45224 (tags/0.8.2~9)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Wed Apr 7 12:53:24 2010 +0200
+
+    clean: remove the manpage as well
+
+commit 57968277eee307ed7ded98ab7696ba481b9266b4 (tags/0.8.2~10)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Tue Apr 6 17:37:34 2010 +0200
+
+    install the manpage
+
+commit a52f5cde75b7bfb22d0b43ad0a399bf9dbdc1f1c (tags/0.8.2~11)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Tue Apr 6 00:55:07 2010 +0200
+
+    add test_join setting
+
+commit a3308353cdf40302f524b8167aa084a8ef91a2c2 (tags/0.8.2~12)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Mon Apr 5 23:44:58 2010 +0200
+
+    Debian: s/experimental/unstable/g
+
+commit 74107a1f6032df00d341e49831d4821e37f86d0e (tags/0.8.2~13)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Mon Apr 5 23:25:07 2010 +0200
+
+    make building documentation optional
+
+commit a65ec8c459813c84ed9ca57872b0df9add83a049 (tags/0.8.2~14)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Fri Mar 19 17:44:46 2010 +0100
+
+    checkpatch fixes
+
+commit f666b9a26f6132400ccaacd8c2f7c6e66a27331b (tags/0.8.1)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Wed Mar 17 19:12:30 2010 +0100
+
+    updates for 0.8.1
+
+commit 30cc51cdd7716713195ba9e39b1343ad48c8dbb4 (tags/0.8.1~1)
+Author: Wilmer van der Gaast <wilmer@gaast.net>
+Date:   Wed Mar 17 14:44:57 2010 +0000
+
+    BitlBee 1.2.5 compatibility patch
+    
+    Heya,
+    
+    Just to make sure people don't get screwed by BitlBee 1.2.5, here's a
+    diff to make stuff work smoothly.
+    
+    I think without this patch they'll see crashes, sorry about that. :-(
+    
+    Running the plugin on my desktop now. I'd test it but I have absolutely
+    no friends on Skype apparently. But the debugging console looks like
+    setting away states works:
+    
+    /away busy
+    2010-03-17 14:43:55: >> SET USERSTATUS DND
+    2010-03-17 14:43:55: << USERSTATUS DND
+    2010-03-17 14:43:56: << USER lintux ONLINESTATUS DND
+    2010-03-17 14:43:56: << USERSTATUS DND
+    /away something
+    2010-03-17 14:43:59: >> SET USERSTATUS AWAY
+    2010-03-17 14:43:59: << USERSTATUS AWAY
+    2010-03-17 14:44:00: << USER lintux ONLINESTATUS AWAY
+    2010-03-17 14:44:00: << USERSTATUS AWAY
+    /away
+    2010-03-17 14:44:01: >> SET USERSTATUS ONLINE
+    2010-03-17 14:44:01: << USERSTATUS ONLINE
+    2010-03-17 14:44:04: << USER lintux ONLINESTATUS ONLINE
+    2010-03-17 14:44:04: << USERSTATUS ONLINE
+
+commit 49bbba232b22b94991841aba0d9c6978146e2640 (tags/0.8.1~2)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Mon Mar 8 23:48:51 2010 +0100
+
+    next testemonial
+
+commit ad96d063d61d86137f6ef6e4292ec810506c908c (tags/0.8.1~3)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Mon Mar 8 01:00:07 2010 +0100
+
+    fix up two tests
+
+commit b6deb11a91afe5a62389bef26d83ab2839769a89 (tags/0.8.1~4)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Mon Mar 8 00:37:06 2010 +0100
+
+    skyped: fix a typeerror
+
+commit 0ea968fc7fbc0e29f4c73efb645bd382da012dfb (tags/0.8.1~5)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Mon Mar 8 00:34:45 2010 +0100
+
+    checkpatch fixes
+
+commit f12c64272521c8cfc5bd1525b959ab83241bfdab (tags/0.8.1~6)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Mon Mar 8 00:22:46 2010 +0100
+
+    cleanup, set_add accepts NULL for the evaluator callback
+
+commit 3a3f6bf0b83c58555823e378ed15d1cefbc06568 (tags/0.8.1~7)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sun Mar 7 20:59:35 2010 +0100
+
+    update skype version
+
+commit 64b6431fb50e1fdd76309711e68c09a3e3ece00b (tags/0.8.1~8)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sun Mar 7 20:50:39 2010 +0100
+
+    make the edit_prefix configurable
+
+commit dab2b78f54ee91c0080fc93f678b353964081487 (tags/0.8.1~9)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sun Mar 7 20:09:48 2010 +0100
+
+    Prefix the edited messages with "EDIT:"
+
+commit 173887b0e608c82d8a36d6552b978629f841a8c9 (tags/0.8.1~10)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sun Mar 7 20:04:36 2010 +0100
+
+    Fix handling of edited messages.
+
+commit cc83afb4588dfdc6c1a882806f26b71e4a598306 (tags/0.8.1~11)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Wed Dec 23 23:53:40 2009 +0100
+
+    update skype version
+
+commit be37f48ba73bb02bae4724926de0dd603eb6e7ed (tags/0.8.1~12)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sat Dec 12 02:08:22 2009 +0100
+
+    make skype_write() parameters mimic write()'s one
+
+commit 2f69f3003ffac11b1580ebcdc9397746f32a26a6 (tags/0.8.1~13)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sat Dec 12 02:04:43 2009 +0100
+
+    introduce skype_printf
+
+commit dde56a6712a9d1f54f488db967753dc6878937c5 (tags/0.8.1~14)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sat Dec 12 01:19:02 2009 +0100
+
+    1024 -> IRC_LINE_SIZE
+
+commit 935a376c6e7fe9d5a5a01d81156d8d400f1b4363 (tags/0.8.1~15)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sat Dec 12 01:18:39 2009 +0100
+
+    configure.ac: add freebsd
+
+commit 8ef88d57c1dabbe11d34a2de87f9fa611285da35 (tags/0.8.1~16)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Wed Dec 9 13:02:47 2009 +0100
+
+    document how to build plugins for 1.2.4
+
+commit 274768c93cc0b75452b550144ec558441335ca1b (tags/0.8.1~17)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Wed Dec 9 12:58:29 2009 +0100
+
+    handle Gentoo's automake wrapper when searching for automake
+
+commit 7a41f9cc6353f19858fe8bfbd4af668d7d571a0b (tags/0.8.1~18)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Wed Dec 9 11:27:26 2009 +0100
+
+    skyped: cleanup
+
+commit 583a0ccb60c81bff610766a5dd8861d8151506a3 (tags/0.8.1~19)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sun Oct 4 16:25:09 2009 +0200
+
+    new skype4py release
+
+commit b19da86e52607c806081445dd887648b57b590d3 (tags/0.8.0)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sun Sep 27 13:29:09 2009 +0200
+
+    updates for 0.8.0
+
+commit 3199b60dd40d014621bc9349a7070eee13d9f54f (tags/0.8.0~1)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sun Sep 27 13:22:59 2009 +0200
+
+    add a manpage
+
+commit 6faf067a3005b25e63e08f4e581a9136c48248c1 (tags/0.8.0~2)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Mon Aug 31 19:06:32 2009 +0200
+
+    skyped: let the error message suggest placing the config file under ~/.skyped
+    
+    so the new error message will be like:
+    
+    $ python skyped.py -d -n
+    Can't find configuration file at '/home/vmiklos/.skyped/skyped.conf'.
+    Use the -c option to specify an alternate one.
+
+commit 7bf8ecc2b80f0a70a0c86e5e82354864ee9b0267 (tags/0.8.0~3)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Mon Aug 31 17:56:31 2009 +0200
+
+    add -fPIC to CFLAGS
+    
+    see http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=532917
+
+commit 63aa147cee907a13c766e1e20b2fe72f75b070dd (tags/0.8.0~4)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Mon Aug 31 17:50:35 2009 +0200
+
+    update HACKING
+
+commit 8f03b6a64c92512bc1ee1c23270a4675f4098d82 (tags/0.8.0~5)
+Author: Leho Kraav <leho@vmr45.dataring.ee>
+Date:   Tue Aug 18 14:24:49 2009 +0300
+
+    dprint() now timestamps debug messages
+    
+    it's good to know when exactly a problem occurs.
+    
+    [ mv: minor rewording of the commit message and filter pointless mode
+    change ]
+
+commit 3b6cd3273f33e6035ba5a716aac0ae487f7547de (tags/0.8.0~6)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Tue Aug 18 12:58:17 2009 +0200
+
+    add a mailmap
+
+commit fe8b153246244c40a08538e78cd67bba77c5f3bd (tags/0.8.0~7)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Mon Aug 3 13:13:59 2009 +0200
+
+    add reference to experimental, as requested on IRC
+
+commit d598baac50fb2ad2324a1deb996a16f5b1f8faa4 (tags/0.8.0~8)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sun Jun 7 14:06:46 2009 +0200
+
+    cosmetics: twm -> blackbox
+
+commit 34016cba12f1935ce03c2101dcaaa7cbaedfa8df (tags/0.8.0~9)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sat Jun 6 13:54:36 2009 +0200
+
+    bitlebee-skype is now part of Debian experimental
+
+commit 03009aef7a110ce2890c2d272b8768b9da0a2fb4 (tags/0.8.0~10)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Wed Apr 29 19:36:52 2009 +0200
+
+    add filetransfer bug
+
+commit eccc88315c57dabee4697c663a0fb52bea8036a7 (tags/0.7.2)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Wed Apr 29 19:27:48 2009 +0200
+
+    updates for 0.7.2
+
+commit 59b4ca706b3f3b1dbebe87ea3780cc6a86793697 (tags/0.7.2~1)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Wed Apr 29 19:24:18 2009 +0200
+
+    add support for user-wide config files
+    
+    in the past the config file was expected in /etc/skyped, change this to
+    ~/.skyped, and just fall back to the previous path if it's not
+    available.
+
+commit 9a74492005e0dc0328d4ce1334ab8676ebe5699a (tags/0.7.2~2)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Fri Apr 24 11:52:55 2009 +0200
+
+    testemonial
+
+commit 6ca303d3f198f2138744846243d9b5dcd64039ba (tags/0.7.2~3)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sun Apr 19 21:25:37 2009 +0200
+
+    if we are at it, refer to python-skype as well
+
+commit f20ef14780a2d87a40b5a0479789b7c10baa0452 (tags/0.7.2~4)
+Author: Sebastian Ramacher <s.ramacher@gmail.com>
+Date:   Sun Apr 19 21:22:19 2009 +0200
+
+    fix Debian makedeps
+    
+    From: Sebastian Ramacher <s.ramacher@gmail.com>
+
+commit da083aca4c31d0da4942822c2d7229e9a3fb4206 (tags/0.7.2~5)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Fri Mar 13 15:35:10 2009 +0100
+
+    grammar
+
+commit c3dbbb4ff0c6fbb26678fd380be86f5646fe61bf (tags/0.7.2~6)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Fri Mar 13 15:33:22 2009 +0100
+
+    new testemonial
+
+commit 7f3339c479a107ad84a91465ffd614645b8222b2 (tags/0.7.2~7)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Wed Feb 18 01:30:13 2009 +0100
+
+    skyped: add logfile option
+    
+    using this option messages are not lost when not running in foreground
+    mode
+
+commit e894e7eac61d2b7aa712cc71588ab6cc03ceb78c (tags/0.7.2~8)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Wed Feb 18 01:23:07 2009 +0100
+
+    t: add summary to the end
+
+commit 86af50df47c5887741b22008385db1687c63a092 (tags/0.7.2~9)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Wed Feb 18 01:01:09 2009 +0100
+
+    add test for the info command
+
+commit b0f55480a5645e17f3fd39a3f6dcf32555d902c0 (tags/0.7.2~10)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Wed Feb 18 00:49:19 2009 +0100
+
+    t: autogen skyped.conf
+
+commit 683c97e79efe362dfcf0ac99a406c47661ee5371 (tags/0.7.2~11)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Wed Feb 18 00:36:05 2009 +0100
+
+    add testcase for sending and receiving messages
+
+commit 033fe5dba3b72edb2e18a7145c7fb2c4de6329fc (tags/0.7.2~12)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Tue Feb 17 22:04:21 2009 +0100
+
+    Initial testcase.
+    
+    Code is based on ulim's automated live tests.
+
+commit b8fea5b8acb1c5e915676186ddb923e8f9d796f2 (tags/0.7.2~13)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Tue Feb 17 22:11:20 2009 +0100
+
+    skyped: handle the case when LANG and LC_ALL env vars are empty
+
+commit c5dbeaea8a5f8eca8ad8d9b4f61f5f69649e92fd (tags/0.7.2~14)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Tue Feb 17 04:10:09 2009 +0100
+
+    new testemonial
+
+commit 47aad91609b95b3535d3a19ba1ae70aa7cf9e6b4 (tags/0.7.1)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Fri Feb 13 23:39:38 2009 +0100
+
+    updates for 0.7.1
+
+commit dcfe96eb3a4b7bed08b0695a15b2212dac0c1a64 (tags/0.7.1~1)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Fri Feb 13 23:36:27 2009 +0100
+
+    g_strdup_printf("%s", foo) -> g_strdup(foo)
+
+commit 490d5e261620df19dbf844c9fdda2ab76813b2c4 (tags/0.7.1~2)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Mon Jan 19 14:10:04 2009 +0100
+
+    new testimonial
+
+commit af1d0e53303ceddcc5dd8743e46297a1a54e2dd8 (tags/0.7.1~3)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sun Jan 18 01:12:04 2009 +0100
+
+    Remove unnecessary includes
+
+commit c6fe637b32934acb7e37f13556fe4f5751e8853f (tags/0.7.1~4)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Wed Jan 7 03:39:37 2009 +0100
+
+    remove enum names, cleanup
+    
+    no, this is not about hurting wilmer, it's just that the jabber code is
+    now really different. he's still in the readme for a good reason.
+
+commit 7753acbba3706c735c23789bc913c3642e2ad7ba (tags/0.7.1~5)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Wed Jan 7 03:36:25 2009 +0100
+
+    whitespace cleanup in skype_away_state_list
+
+commit e80ec5de1c818977575b20decdcc3d815bdd9d16 (tags/0.7.1~6)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Wed Jan 7 03:31:20 2009 +0100
+
+    add a check target
+
+commit 35ac19cb3192a49851d364c298ec3bfa6adcb355 (tags/0.7.1~7)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Wed Jan 7 03:29:07 2009 +0100
+
+    last whitespace fixes
+    
+    - checkpatch is now happy ;)
+    - hit me, i also seem to correct away status handling (it set away when
+      the user was online|skype and not the opposite)
+
+commit 76a1692e0f5e05636b5a120b199ab8be980004a5 (tags/0.7.1~8)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Wed Jan 7 03:10:29 2009 +0100
+
+    remove unnecessary big if blocks, use return instead
+
+commit 8012a846e8913db84ecfd9e667551c08b00d8881 (tags/0.7.1~9)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Wed Jan 7 03:02:20 2009 +0100
+
+    whitespace, fixes checkpatch errors
+
+commit 83f8b703882214904d730351c4210c885befd373 (tags/0.7.1~10)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Wed Jan 7 02:56:18 2009 +0100
+
+    introduce the parse_map struct
+
+commit fe906604c5e1f085a35fb8acf14f96aafdeffb02 (tags/0.7.1~11)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Wed Jan 7 02:35:11 2009 +0100
+
+    introduce skype_parse_profile()/skype_parse_ping()/skype_parse_chats()
+    
+    with this checkpatch now reports only 55 ws errors, compared to 182
+
+commit f4aa025b2f7a65551cfc1471bf2f24ddde16ed31 (tags/0.7.1~12)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Wed Jan 7 02:31:38 2009 +0100
+
+    introduce skype_parse_password()
+
+commit 6c9ef0558fc70fc3d0ee43d30d3d0293dcdd953e (tags/0.7.1~13)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Wed Jan 7 02:29:22 2009 +0100
+
+    introduce skype_parse_chat()
+
+commit 95c003599a1881ca23e5988455ec81dbabfdbc40 (tags/0.7.1~14)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Wed Jan 7 02:26:08 2009 +0100
+
+    introduce skype_parse_filetransfer()
+
+commit 1d23cc07e57cdaf84365b46fbd347cfaa826ecab (tags/0.7.1~15)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Wed Jan 7 02:23:38 2009 +0100
+
+    introduce skype_parse_call()
+
+commit 4ec7768c4adf14d67f7301ab78b64666b3ac117f (tags/0.7.1~16)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Wed Jan 7 02:20:57 2009 +0100
+
+    introduce skype_parse_user() and skype_parse_chatmessage()
+
+commit f4aeb7a429395ab8219acf9f722120f982105efa (tags/0.7.1~17)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Wed Jan 7 02:11:44 2009 +0100
+
+    cleanup in skype_parse_users()
+
+commit 0481e8540282ae7763eb0e07f5c2a3984c849df3 (tags/0.7.1~18)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Wed Jan 7 02:10:13 2009 +0100
+
+    introduce skype_parse_users()
+
+commit 538a6781245fbbe437c9f3653a7aa447f7bd8697 (tags/0.7.1~19)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Wed Jan 7 02:02:53 2009 +0100
+
+    do not add new typedefs
+
+commit 35d63783f9150873522f339f14483d5bbd89523e (tags/0.7.1~20)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Wed Jan 7 01:58:15 2009 +0100
+
+    whitespaces fixes
+    
+    mainly long lines, except in skype_read_callback()
+
+commit 2f524e80c176726124718bd24031208485e79040 (tags/0.7.0)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Wed Jan 7 01:35:14 2009 +0100
+
+    updates for 0.7.0
+
+commit 843e5eeedd9111ba4dcfd9199778c0fbff271c5c (tags/0.7.0~1)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Wed Jan 7 01:31:24 2009 +0100
+
+    update HACKING
+
+commit 9caf5f22fe1f4a732578e0913f1d4a577c672059 (tags/0.7.0~2)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Wed Jan 7 01:31:18 2009 +0100
+
+    add new skype/skypeconsole_receive setting for receiving raw data on skypeconsole
+
+commit 1bddd378c63eb5b100d4d1d3c95983dc348e79bc (tags/0.7.0~3)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Tue Dec 30 03:39:43 2008 +0100
+
+    skyped: use hashlib instead of sha (python2.6 warning)
+
+commit 4bd0937bd881fa25155c6d57ce75a6df527d9834 (tags/0.7.0~4)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Mon Dec 22 00:45:51 2008 +0100
+
+    fix typo in skyped -h
+
+commit 5b06f293cd0927ef98c51b3f8c694a48b287e170 (tags/0.7.0~5)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sun Dec 21 21:50:56 2008 +0100
+
+    whitespace cleanup
+
+commit 68703f584f47a104177d35178deeccc4fe7d6d8a (tags/0.7.0~6)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sun Dec 21 21:08:44 2008 +0100
+
+    remove the 'len' parameter of skype_write()
+
+commit b6068055cc8aed0e42c60d78947421f5ea246997 (tags/0.7.0~7)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sun Dec 21 21:02:54 2008 +0100
+
+    update NEWS
+
+commit 17809b7f0dbf6977544243eb36ed6a3c1caea8c5 (tags/0.7.0~8)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sun Dec 21 21:00:30 2008 +0100
+
+    support autojoin for bookmarked chats
+
+commit caf101302635edb4c31f7985c62671ccf44cc261 (tags/0.7.0~9)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sun Dec 21 20:36:47 2008 +0100
+
+    add 'skypeconsole' feature
+    
+    this replaces the old client.py
+
+commit 37a9e9a24c6ddeeae9ed878df0a2d6485541b31d (tags/0.7.0~10)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sun Dec 21 20:19:34 2008 +0100
+
+    replace client.py with client.sh which provides more interactivity
+
+commit 2829b1fa1af16c52b0500f5552320e644b5dadcd (tags/0.7.0~11)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sun Dec 21 19:35:24 2008 +0100
+
+    replace /dev/null with os.devnull in skyped
+
+commit fca89ba74ef7017bc341a92cb4b409bae2ccc186 (tags/0.7.0~12)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sun Nov 16 02:16:54 2008 +0100
+
+    skyped: handle the case when even reading the user/pass fails
+    
+    ideally this is rare, i never got a network error right after connect,
+    but you can never be sure.. ;)
+
+commit 14fb959fe4ea76210cae92822e4138baf8dce263 (tags/0.7.0~13)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Wed Nov 12 18:47:46 2008 +0100
+
+    handle the case in make autogen when automake is not under /usr/share
+
+commit 503c2c79751546223c005dad9b57e726f7111daa (tags/0.7.0~14)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Fri Nov 7 15:06:28 2008 +0100
+
+    finally a new skype4py 1.x is out which works for me as well
+
+commit 2a1e228c36bcf448f1f3c36ece882bdf12e7e0d9 (tags/0.7.0~15^2)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Wed Sep 24 11:03:55 2008 +0200
+
+    add yasrd to todo
+
+commit ba12af5763948e08e198309a2d7c20c0db10723e (tags/0.6.3)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Mon Sep 8 09:31:48 2008 +0200
+
+    updates for 0.6.3
+
+commit 57d7cc795ec532ee6c714bdb84c72619febcd3fc (tags/0.6.3~1)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Mon Sep 8 03:09:14 2008 +0200
+
+    skyped: when sending, encode using utf8 if we can't get the system default
+    
+    this fixes a runtime error on osx
+
+commit 2b4e0e0814f2a8ff869b5bd49b88fb0682569c9e (tags/0.7.0~16)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Mon Sep 8 00:14:51 2008 +0200
+
+    add a sample public server which has skype support
+
+commit 41c19d4c045f928483df26145cfc1cfb894bc35f (tags/0.6.3~2)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Mon Sep 8 00:09:28 2008 +0200
+
+    add/usr/local/lib/pkgconfig to PKG_CONFIG_PATH automatically if it makes sense
+
+commit 426f2492c18a31a1c9a3f023c2bb56b15be19853 (tags/0.6.3~3)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sat Sep 6 16:58:34 2008 +0200
+
+    clean up osx shared_flags
+
+commit 2d6a8453b9e101d39a74de3a52e0a947d82e2de3 (tags/0.6.3~4)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sat Sep 6 04:57:29 2008 +0200
+
+    ignore error if not yet started skyped fails to shut down
+    
+    at this points skyped runs fine for me on osx (plugin is not yet tested)
+
+commit afd2d369ba4ef2c0b4bfb9f0a3d401c97bc0ee7e (tags/0.6.3~5)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sat Sep 6 04:07:05 2008 +0200
+
+    initial osx instructions
+
+commit 8efce97be960014640faa7dfdfe0d3c52c8fc9fe (tags/0.6.3~6)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sat Sep 6 03:57:22 2008 +0200
+
+    add python-gnutls install instructions
+
+commit 46ea89f2be23802aa464cc9bbf815d848b82a1e4 (tags/0.6.3~7)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sat Sep 6 03:42:49 2008 +0200
+
+    update gitignore for osx
+
+commit d8eb205cce240669d9dde22d8115fd5f5eda0cbb (tags/0.6.3~8)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sat Sep 6 03:31:59 2008 +0200
+
+    use perl instead of sed to avoid portability issues on osx
+
+commit cd48b2c340cd11a403ba03c5a4247d47e94b54ba (tags/0.6.2)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Fri Sep 5 22:04:45 2008 +0200
+
+    updates for 0.6.2
+
+commit 73874b53fbcc1728ebbf77e5bcd372a287f64069 (tags/0.6.2~1)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Fri Sep 5 22:03:45 2008 +0200
+
+    install: no longer depend on the plugin if its disabled
+
+commit c6ad4dd9c0e7080a2491fe5152b9ef626927c23d (tags/0.6.1)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Fri Sep 5 21:54:33 2008 +0200
+
+    updates for 0.6.1
+
+commit 4dfc0306d2a56b5c5134cf13843cad43b8b1d98f (tags/0.6.1~1)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Fri Sep 5 21:52:14 2008 +0200
+
+    docu update and remove todo item
+
+commit 17c8305737852bce0c69808d6f38cf5939951c74 (tags/0.6.1~2)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Fri Sep 5 21:47:55 2008 +0200
+
+    fix skyped-only install
+
+commit e45651e002af41b393334a72ded1b9832c4938ac (tags/0.6.1~3)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Fri Sep 5 21:44:58 2008 +0200
+
+    make bitlbee dependency optional as well
+    
+    this way it's possible to build bitlbee-skype on a client where only
+    skyped will be running, so messing with the plugin makes no sense
+
+commit 3353b50d82bd116f1acaab22ddda94e1be5ccfc5 (tags/0.6.1~4)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Fri Sep 5 21:29:51 2008 +0200
+
+    configure: put the nasty error message in config.log where it belongs
+
+commit 6ff21b65cdf6b940b9f55a0921db6652e4034a09 (tags/0.6.1~5)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Fri Sep 5 21:25:16 2008 +0200
+
+    check for the skype4py python module and disable skyped if not available
+
+commit 7520d543e022c78a9da0e010fbd2d656dc6b192e (tags/0.6.1~6)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Wed Sep 3 12:50:54 2008 +0200
+
+    add a little story about my uptime ;)
+
+commit c24a1ef3761951794eebd14329b5d3b55e7130c7 (tags/0.6.1~7)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Wed Sep 3 12:44:24 2008 +0200
+
+    don't depen on a version with secbugs
+
+commit f0b45c22bbd51e93842f029c8cdab11f1b458652 (tags/0.6.1~8)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Fri Aug 15 18:08:45 2008 +0200
+
+    fix bitlbee compile instructions
+
+commit 71a71e53c72819a80bef6f73cba9518f445bc013 (tags/0.6.1~9)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Thu Aug 7 15:19:34 2008 +0200
+
+    typo fix for creating the osx plugin
+
+commit 106ff7f2bab414a84a4b5593a3baab506dbc5912 (tags/0.6.1~10)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Tue Jul 29 21:08:45 2008 +0200
+
+    tested 2.0.0.72
+
+commit 3252f69a1fa190f5064cbde6d457c553bf4ae751 (tags/0.6.1~11)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Tue Jul 29 18:12:02 2008 +0200
+
+    next testemonial
+
+commit dad3c5bce9b74e8b5bf3d68f72f5fd95e0247936 (tags/0.6.1~12)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Tue Jul 29 18:08:01 2008 +0200
+
+    update note about skype4py-1.x
+
+commit 097b4fd1481aa1ca8141deeec545463ee23aece9 (tags/0.6.1~13)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Thu Jul 24 14:56:09 2008 +0200
+
+    fix up syntax for newer asciidoc
+
+commit a994df708f3d5cea36536ba5384d6bf5f5a31404 (tags/0.6.1~14)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sat Jul 12 22:11:10 2008 +0200
+
+    skype.c: respont with a PONG to PING
+
+commit b331214f99798ec450297b4a94e98f9196f7d0c9 (tags/0.6.1~15)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sat Jul 12 22:10:25 2008 +0200
+
+    skyped: send periodically a 'PING' to the client
+    
+    also ignore the 'PONG' output from it (so don't forward it to skype)
+
+commit c1d09a853611d30ec0ee4d308be460211c45f2aa (tags/0.6.1~16)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Thu Jul 10 10:29:22 2008 +0200
+
+    new todo
+
+commit 4d311bc82c06e84964ea13e0107f3489391c7e6f (tags/0.6.1~17)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sat Jun 28 02:16:11 2008 +0200
+
+    doc cleanup
+
+commit 521df318873adf2c22f48833af89de2c933b1a41 (tags/0.6.0)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sat Jun 28 02:11:50 2008 +0200
+
+    change key id
+
+commit 239125e28dae9e025c228aa210347ebb607d2545 (tags/0.6.0~1)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sat Jun 28 02:10:42 2008 +0200
+
+    updates for 0.6.0
+
+commit 864de50fce6eb6229cf87e37c29a5493926df5b0 (tags/0.6.0~2)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sat Jun 28 02:09:25 2008 +0200
+
+    add support for bitlbee-1.2.1
+
+commit 86a6464d9ecbe842af832e1bdd5cfe672da4ba3e (tags/0.6.0~3)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sat Jun 28 02:07:56 2008 +0200
+
+    readme: and a grammar one
+
+commit 83aa99326ea7e85bbebfb986618284f84f0e0997 (tags/0.6.0~4)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sat Jun 28 02:07:20 2008 +0200
+
+    readme: syntax fix
+
+commit 358eb2846b28bf0658ff5c5807fc3588f99fb021 (tags/0.6.0~5)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sat Jun 28 02:06:44 2008 +0200
+
+    add note about skype4py-1.x breakage
+
+commit fbc6ec77cd6f5f12cf91a9bbf97165d22c9feb58 (tags/0.6.0~6)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Wed Jun 18 19:47:26 2008 +0200
+
+    docu update
+
+commit 252439cae4267b6ead59b27ffa694f6a1a9773dc (tags/0.5.1)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Wed Jun 18 19:37:28 2008 +0200
+
+    updates for 0.5.1
+
+commit d24f71fbfbf968663034ef1d6f05f318034fd3d3 (tags/0.5.1~1)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Wed Jun 18 19:34:59 2008 +0200
+
+    configure: match prefix with bitlbee's one
+    
+    otherwise bitlbee won't find the plugin
+
+commit 0e67c8ca1b9e86cfd299213a684eb6ed0b1ceb43 (tags/0.5.1~2)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Wed Jun 18 19:15:30 2008 +0200
+
+    configure: update email
+
+commit e4ee3cdf55459964c131632bd384d4af73e1c514 (tags/0.5.1~3)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Wed Jun 18 19:13:49 2008 +0200
+
+    echo some config output at the end of configure
+
+commit 32897bc5ba0e793f267780eaca0a4307b7f256d6 (tags/0.5.1~4)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Wed Jun 18 19:13:29 2008 +0200
+
+    configure: fix "./configure: line 2824: test: too many arguments"
+
+commit bcd74f11164e6072313228aeb5f93032cb6bae81 (tags/0.5.1~5)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Mon Jun 2 00:44:26 2008 +0200
+
+    update public chat todo
+
+commit f713db848a179707e2021c2b639def049dcba214 (tags/0.5.0)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sat May 24 03:02:27 2008 +0200
+
+    updates for 0.5.0
+
+commit 0b3e50b8e46018d8f65afaf3eddb33604c35aec5 (tags/0.5.0~1)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sat May 24 02:55:07 2008 +0200
+
+    tested with newer skype version
+
+commit 2aff12c2014a9b6aa8955f83c7c0d38d1470dc68 (tags/0.5.0~2)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Wed May 21 15:05:29 2008 +0200
+
+    document how do i usually start skyped in vnc
+
+commit 343a2a4c20e57d93a905df57b98d8eb4c5a09878 (tags/0.5.0~3)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Mon May 19 20:22:58 2008 +0200
+
+    remove no longer used CLIENT_NAME
+
+commit c3ee89399f6d0de5625a3c13f41bdf829b147a7d (tags/0.5.0~4)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Mon May 19 20:22:03 2008 +0200
+
+    allow setting the port from the config file
+
+commit 8472b18f5738ab6eaa74a10315a9ec2037b07c7d (tags/0.5.0~5)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Mon May 19 17:24:18 2008 +0200
+
+    update readme to be easier to follow for frugalware/debian users
+
+commit d2f29bf5d6948ee691612507a049c5943db35163 (tags/0.5.0~6)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Mon May 19 15:25:49 2008 +0200
+
+    don't die on failed handshake
+
+commit 43ac06f165ede8070e56905e7ff0e23a2c7d3810 (tags/0.5.0~7)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Fri May 16 13:09:24 2008 +0200
+
+    skyped: close the socket on read/write error
+    - it turns out that once we have a read/write error we can never use the
+      socket again so just close it then bitlbee will reconnect properly
+
+commit fc43341798228599465333bac5e11dc8fca84f6f (tags/0.5.0~8)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Tue May 13 11:33:31 2008 +0200
+
+    add more detailed info on how to install skype4py
+
+commit 4f34788f4ccd52a6f15f3d7ad6ad61388d89634f (tags/0.5.0~9)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Mon May 12 01:30:03 2008 +0200
+
+    doc generation cleanup
+
+commit 595aa5215a5f33aae080569fbad91ea83826997b (tags/0.5.0~10)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Mon May 12 01:23:03 2008 +0200
+
+    README: document how to avoid compiling bitlbee from source under deb
+    
+    01:13 < wilmer> vmiklos: Ok, bitlbee-dev will be in unstable in a few hours!
+
+commit ff9106cdf42fb9140f8daf0fa4b5efc8b3e8473a (tags/0.5.0~11)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Tue May 6 10:09:39 2008 +0200
+
+    added a new testemonial
+
+commit 7cee3668548e31a0923e9c82daec6d6bb64e99f2 (tags/0.5.0~12)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Thu May 1 01:57:49 2008 +0200
+
+    add python-gnutls support and make it default if available
+    - this change in general should be ok, since openssl has problems when
+      using it from gpl software which is distributed as a binary.
+    - anyway, i hope that this will solve that magic "Fatal Python error:
+      PyEval_RestoreThread: NULL tstate" error. at least it worth a try.
+
+commit 4ba938fd20695650ebdd78cab98379e5abaf5896 (tags/0.5.0~13)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Thu May 1 00:17:55 2008 +0200
+
+    modularize openssl code
+    - so that later we may use gnutls as well (or other ssl implementations)
+
+commit 8217b974f56fec6fa56169fc903be48b057ef272 (tags/0.5.0~14)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Thu May 1 00:07:15 2008 +0200
+
+    and same for receive: catch any error
+
+commit 11d71e51f440473edc9df00045a805d661d2bcf3 (tags/0.5.0~15)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Mon Apr 28 13:10:28 2008 +0200
+
+    catch any error on send (ie SysCallError as well)
+
+commit 407dc52059083e14b45370805d94d737ac9e7610 (tags/0.4.2)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sun Apr 20 23:38:16 2008 +0200
+
+    updates for 0.4.2
+
+commit 26b4c6e38421df4d756b63a2fba3623ac861f319 (tags/0.4.2~1)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sun Apr 20 22:40:26 2008 +0200
+
+    skyped: use gobject.timeout_add() to make it more responsive
+
+commit 580992fc7284bb36f2627b88f0fdc77dbb582d3b (tags/0.4.2~2)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Wed Apr 16 11:09:59 2008 +0200
+
+    antispam
+
+commit fe28d955633c34bbbb6152c30c21ac7fd60cae7f (tags/0.4.2~3)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Thu Apr 10 18:57:16 2008 +0200
+
+    new testemonial
+
+commit e62b08a2bc7846e560675795fb6a5651226350f0 (tags/0.4.2~4)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sun Apr 6 20:39:32 2008 +0200
+
+    a fix for python-2.4 compatibility
+    - interesting, it has been reported this is the only problem, though
+      ideally skype4py doesn't work with python-2.4 either ;)
+
+commit 7608be4ebbd158bcd0f242c1a541277704e16162 (tags/0.4.2~5)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sat Apr 5 14:14:52 2008 +0200
+
+    new testemonial
+
+commit 4bacad8b21aaefadc5065085a5ac8bcd8e37ff79 (tags/0.4.2~6)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sat Apr 5 01:42:54 2008 +0200
+
+    update news
+
+commit aae2e445b94ea5d224527f218be0ad4f06c9c1f5 (tags/0.4.2~7)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Fri Apr 4 16:40:26 2008 +0200
+
+    document skypeout_offline setting
+
+commit 52382856018fa6539e405b0b69b5362f6cdf5931 (tags/0.4.2~8)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Fri Apr 4 16:37:24 2008 +0200
+
+    document how to set a custom port
+
+commit 051e98674cde53779991d7d57d56b03d909a3476 (tags/0.4.2~9)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Fri Apr 4 16:35:41 2008 +0200
+
+    new config variable: skypeout_offline for who liked the old behaviour
+
+commit 2a353a0ebf5e402bc8ce3169a2fa3c7afc0521e7 (tags/0.4.2~10)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Fri Apr 4 16:19:46 2008 +0200
+
+    skype_read_callback(): handle SKYPEOUT nicks as offline as well
+    - you can chat with them and you can stil call them without spamming the
+    user list
+
+commit b09f8fa476f154f2a386f8eb6016a517b3e4b604 (tags/0.4.2~11)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Thu Apr 3 01:21:49 2008 +0200
+
+    update NEWS
+
+commit 7de75a4eb5c9bb50421a624b0d9fbf80eb10c3c6 (tags/0.4.2~12)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Thu Apr 3 01:19:37 2008 +0200
+
+    document the new account set skype/balance command
+
+commit 33f0d40e5629bf38d28bbf866f223e8fff970a08 (tags/0.4.2~13)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Thu Apr 3 01:18:05 2008 +0200
+
+    skype_read_callback(): handle a profile's balance
+
+commit 0a8b0f98cc678045d3de1fa1dd5e241faf9bcbcb (tags/0.4.2~14)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Thu Apr 3 01:11:21 2008 +0200
+
+    new skype_set_balance() function
+    - it triggers a query from skype for the current balance, but the read
+      callback does not handle it yet
+
+commit b852e975c9a23a2d8786d01f57aaebe30efcf7f6 (tags/0.4.2~15)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Thu Apr 3 01:00:57 2008 +0200
+
+    skype_read_callback(): mark a call ended if it failed
+
+commit 01fb2be6ed0669db65093a24a4d80dda2d2114f1 (tags/0.4.2~16)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Thu Apr 3 00:57:17 2008 +0200
+
+    new skype_call_strerror() function to handle different call errors
+
+commit b03bdb1ea247cbf8893bcf577684a3f70f259f85 (tags/0.4.2~17)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Thu Apr 3 00:44:01 2008 +0200
+
+    skype_set_call() allow calling anybody
+    - here is the logic: we first try to map nicks to skype user names. on
+      success, we use the username, on failure we use the value we got
+      directly, later skype will return an error if there is no such nick or
+      such other error occures.
+
+commit f2f92cba5f1877a3c7b34ae87caff28cf0baa3d2 (tags/0.4.1)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Mon Mar 31 02:37:40 2008 +0200
+
+    updates for 0.4.1
+
+commit 4a93891901d4bc1f6b30126ca655ba3a3fc63f92 (tags/0.4.1~1)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Mon Mar 31 02:20:08 2008 +0200
+
+    renamed make prepare to make autogen
+    - since it does basically what autogen.sh is for automake-based projects
+
+commit f47f8156868dccb846c84a6fa0e459098195bf02 (tags/0.4.1~2)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Mon Mar 31 02:18:06 2008 +0200
+
+    add new autoclean target
+    - after clean, you don't have to re-run configure
+    - after distclean, you should not have to re-run make prepare
+    - as a result, only the new autoclean target will remove files created
+      by make prepare
+
+commit 768d5964edda2663bf66f347db44f332a6cc9b15 (tags/0.4.1~3)
+Author: Riskó Gergely <gergely@risko.hu>
+Date:   Mon Mar 31 02:11:09 2008 +0200
+
+    skype_set_call(): allow calling the test girl
+
+commit a3ee66491d0c738ba2d943ddbd9dc9ec8510b980 (tags/0.4.1~4)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Tue Mar 18 02:40:23 2008 +0100
+
+    remove note about dbus-python, it's old
+
+commit 1b7891309b0fafdf685f1dfe7d9c4bfa8fa36614 (tags/0.4.1~5)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Tue Mar 18 02:39:46 2008 +0100
+
+    bitlbee 1.2
+
+commit 401fd5c455ff02438142b037509f14fa54f586ad (tags/0.4.1~6)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sat Mar 15 03:29:57 2008 +0100
+
+    ignore more files
+
+commit 9b7ed6495c2851ddacaeea830e345f62862416ac (tags/0.4.1~7)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Fri Mar 14 22:44:02 2008 +0100
+
+    avoid ${prefix} in skyped.conf
+
+commit 7bb2c4b4924da1aa657a794187ffe0f727da5da1 (tags/0.4.1~8)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Fri Mar 14 22:41:48 2008 +0100
+
+    tested 2.0.0.63
+
+commit e669184b634a6e79722f9afe9dd61ed7261254c5 (tags/0.4.1~9)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Wed Mar 12 17:21:54 2008 +0100
+
+    update vnc doc
+
+commit 50100384c2a910ae9e8dec196d5d3aa976b510eb (tags/0.4.1~10)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Fri Mar 7 13:38:58 2008 +0100
+
+    add support for osx
+
+commit ba2e79dfe3fd3dd76af611e4395ce69fff11bba0 (tags/0.4.0)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Fri Feb 29 03:12:07 2008 +0100
+
+    updates for 0.4.0
+
+commit b3ea9858ee0cc3fcea997450bfb31bfa80dbe178 (tags/0.4.0~1)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Fri Feb 29 03:08:14 2008 +0100
+
+    manage incoming calls via questions
+
+commit ea46e27759a5c923c6328e16f815d4387391ab55 (tags/0.4.0~2)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Fri Feb 29 02:40:12 2008 +0100
+
+    replace the fake SKYPE_CALL_RINGING_OUT with a proper call_out variable
+
+commit 9e29a5938b462d71f333a5865861d59557b55c0c (tags/0.4.0~3)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Fri Feb 29 02:10:01 2008 +0100
+
+    detect when the call is refused
+
+commit 109fbd039d90e32003b72cdc327cb46b5fcce873 (tags/0.4.0~4)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Fri Feb 29 01:59:51 2008 +0100
+
+    error out on cancelling a non-existing call
+
+commit f5b064b7acd1cd31f85d5e660f8e2a3ec69446f8 (tags/0.4.0~5)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Fri Feb 29 01:49:43 2008 +0100
+
+    report call duration at the end
+
+commit 1a4b25f44e997b58faf19ca5326abb9ad02bcac0 (tags/0.4.0~6)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Fri Feb 29 01:43:02 2008 +0100
+
+    report 'finished' when call finishes
+    till now we reported only cancelled calls
+
+commit 41e75eb71f564eadaddb21f8edcf3909b5b2c931 (tags/0.4.0~7)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Fri Feb 29 01:42:46 2008 +0100
+
+    skyped: don't exit when bitlbee disconnects
+
+commit 1ba9001c04e5618166451a331ae049013e62720a (tags/0.4.0~8)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Fri Feb 29 01:34:31 2008 +0100
+
+    add support for account set -del skype/call
+    to finish an outgoing call
+
+commit a7e842f363b65236aeaf87caa21b236d77c98187 (tags/0.4.0~9)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Fri Feb 29 01:09:22 2008 +0100
+
+    finetune ringing message
+    old:
+    the user foo is ringing you
+    
+    new:
+    you are ringing the user foo
+    or
+    the user foo is ringing you
+
+commit 2a48079e7f29ebe23bdfe295ea0754b1160fcf5a (tags/0.4.0~10)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Fri Feb 29 00:54:28 2008 +0100
+
+    document account set skype/call
+
+commit 675b7eaa34eafed2c21e72a90bc4b957a2ae2b17 (tags/0.4.0~11)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Fri Feb 29 00:53:04 2008 +0100
+
+    remove item from TODO, fixed upstream
+
+commit e67aeb36380e968e5da4d69cc26016d8da1835e2 (tags/0.4.0~12)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Fri Feb 29 00:52:41 2008 +0100
+
+    new account set skype/call nick command to start calls
+
+commit 6cef0ba264ba3a4d69c75f56c8f07f9deb586bd0 (tags/0.4.0~13)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Fri Feb 29 00:52:09 2008 +0100
+
+    remove an unnecessary comment
+
+commit 63b20d7bc3faff45b0597fe333e8409d3c062ec8 (tags/0.4.0~14)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Fri Feb 29 00:21:46 2008 +0100
+
+    suggest account set, server in account add is old
+
+commit f4cf937ca6e646a199f0dc8651f1e18c36fce207 (tags/0.4.0~15)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Fri Feb 29 00:18:45 2008 +0100
+
+    remove skype from HACKING as skyped now automatically starts it
+
+commit fc6e5fdf8572790637e1aa394aad14f2ec5baba5 (tags/0.4.0~16)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Tue Feb 26 13:27:29 2008 +0100
+
+    next testemonial
+
+commit c8d65fab6523fa7a4d4821e568b79c239fae723d (tags/0.4.0~17)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Tue Feb 26 01:10:52 2008 +0100
+
+    add a new section to the readme ;)
+
+commit a5fbdcb18553c58dceda74af27b71a9fb770e11e (tags/0.4.0~18)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sat Feb 23 04:02:35 2008 +0100
+
+    small spelling fixes
+
+commit 71806729a4a7e4bf92d6cce88c8457f0a4cb2639 (tags/0.3.2)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sat Feb 23 03:44:56 2008 +0100
+
+    updates for 0.3.2
+
+commit 042c2b93b4bfbc4f8d473d0c322a53de6ad114ac (tags/0.3.2~1)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sat Feb 23 03:44:23 2008 +0100
+
+    tested with 2.0.0.43
+
+commit d38ebd7e48c38cfa9a40fb81384fd96cb6c0e5b0 (tags/0.3.2~2)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sat Feb 23 03:26:04 2008 +0100
+
+    skyped: remove comment, we use skype4py already
+
+commit 0009cd6ffb3570bbca360bdc959f0151709d0b71 (tags/0.3.2~3)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sat Feb 23 03:24:14 2008 +0100
+
+    kill skype on shutdown
+
+commit 7de2972244dc94102af1db716e90580ef7f349a5 (tags/0.3.2~4)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sat Feb 23 03:17:51 2008 +0100
+
+    small cleanup
+
+commit c78f98d8023e473c2fa67c038ac1f2156b125e55 (tags/0.3.2~5)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sat Feb 23 03:17:06 2008 +0100
+
+    doc update: manual start of skype no longer necessary
+
+commit 59bec6c56ea156e6953eeceba3a033a294c3e682 (tags/0.3.2~6)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sat Feb 23 03:13:59 2008 +0100
+
+    skyped: automatically start skype if necessary
+
+commit 83c1562d4808275615c6957eef84ccabdd4f1e58 (tags/0.3.2~7)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Tue Feb 19 15:40:35 2008 +0100
+
+    typo fix in automake version detection
+    thanks Sebastian (schwarz.s at gmx.de) for pointing this out
+
+commit 31c10efe0f0ddcb0d13b00ef7b170c1adfd9904b (tags/0.3.2~8)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Tue Feb 19 14:13:24 2008 +0100
+
+    remove unnecessary import of threading from skyped
+
+commit 1d1cfa328fbd671ce8ecfa977b41de3c8cb06fd4 (tags/0.3.2~9)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sun Feb 17 19:47:24 2008 +0100
+
+    update gitweb url
+
+commit f1d4f07ef5c40bf7ecc0badb58b89d7c26bf6fdb (tags/0.3.2~10)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Tue Jan 29 00:29:00 2008 +0100
+
+    it seems some distro does not have an automake symlink in /usr/share
+
+commit c3d12f0938ffcc9d3ae74963c7b809cc23a10bb1 (tags/0.3.2~11)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Mon Jan 21 15:05:20 2008 +0100
+
+    README: typo
+
+commit d4cdabf382ada4e0f70847629407c4f7e5e2549c (tags/0.3.2~12)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Mon Jan 21 15:03:50 2008 +0100
+
+    header.html depends on makefile
+
+commit 2193854889320f61c50b1db5b0d483e06821b2b6 (tags/0.3.1)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Mon Jan 21 14:52:51 2008 +0100
+
+    updates for 0.3.1
+
+commit ed780c77afb12824b4d01479eebd933a1412dba6 (tags/0.3.1~1)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Mon Jan 21 14:49:17 2008 +0100
+
+    update todo
+
+commit 398a1801454a9ce0c1fab0e91e5b1eaff7cdf6fd (tags/0.3.1~2)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Mon Jan 21 03:21:43 2008 +0100
+
+    skype_set_display_name(): set FULLNAME, not MOOD_TEXT
+
+commit c3f76bea2d2af2c9836fc2ab0f2d72efcb7542b6 (tags/0.3.1~3)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Tue Jan 15 04:19:43 2008 +0100
+
+    git-archive -> git archive
+
+commit 4241328d105c3ca60fad238f524bc83a9496fd85 (tags/0.3.1~4)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Tue Jan 15 04:17:26 2008 +0100
+
+    link HACKING
+
+commit 71722cf53877bf40abd6f35ee88ff14612bd5b8e (tags/0.3.1~5)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Tue Jan 15 04:14:26 2008 +0100
+
+    move the git stuff to HACKING
+
+commit 50c42b924d6542f42d90133d7060bdd4cc65093b (tags/0.3.1~6)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Tue Jan 15 04:10:35 2008 +0100
+
+    add @version@ magic and prefer tarballs
+    people hate autotools (well, i can understand them as i hate automake as well),
+    so prefer the tarball method where you can avoid make prepare
+
+commit 35b129427831c196859440d52997c444ac20cbad (tags/0.3.1~7)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Tue Jan 15 04:03:08 2008 +0100
+
+    spelling fix
+
+commit c7d3e80df2f3826325a35afe776525aae682b263 (tags/0.3.1~8)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sat Jan 12 22:18:21 2008 +0100
+
+    skyped: catch KeyboardInterrupts everywhere
+
+commit d7d8632898cfb05c1853023be2302a52de221ce5 (tags/0.3.1~9)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sat Jan 12 22:05:39 2008 +0100
+
+    put localhost back to readme
+    as it may now more likely that one wants to run skyped on a remote machine
+
+commit ee43b42f52fa7aeb40b28f17c20738e972a7d5cd (tags/0.3.1~10)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sat Jan 12 22:00:35 2008 +0100
+
+    update HACKING
+
+commit 3cd04217e0f655aaf47a9cc72f526536d6b48b45 (tags/0.3.1~11)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sat Jan 12 21:34:25 2008 +0100
+
+    skyped: update copyright year
+
+commit 4d9b0d7538b386fdececcb426271ebc1aad75b70 (tags/0.3.0)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sat Jan 12 21:22:42 2008 +0100
+
+    one idea for the todo
+
+commit e79ca3cbee3e67c455197bcae720e1be32e0ff3b (tags/0.3.0~1)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sat Jan 12 21:21:36 2008 +0100
+
+    update docs
+
+commit ec1d29c0e30ad3405d0aa3ad8962591807bfc73e (tags/0.3.0~2)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sat Jan 12 21:17:00 2008 +0100
+
+    updates for 0.3.0
+
+commit 64eb250c07c6792cb87ed8f78d3f51027f9e59a7 (tags/0.3.0~3)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sat Jan 12 21:12:50 2008 +0100
+
+    update documentation about how to generate ssl certs
+
+commit 46bdcb9bc42a9e3dc81867aa164d7bb448dbef7c (tags/0.3.0~4)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sat Jan 12 21:09:54 2008 +0100
+
+    add skyped.cnf for easier ssl cert generation
+
+commit dedf2e084525d3c7330b7d06738a8db8f1f1ba3b (tags/0.3.0~5)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sat Jan 12 21:07:10 2008 +0100
+
+    auth via ssl
+    - move the config file to sysconfdir/skyped/skyped.conf as there will other config files there, too
+    - autogenerate the ssl paths in skyped.conf.dist
+    - skype plugin: connect via ssl
+    - skyped: listen via ssl
+
+commit 909e64c22115ceb930b5b1a048e35d1cf46a0df9 (tags/0.3.0~6)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sat Jan 12 02:45:59 2008 +0100
+
+    update doc: pass should now patch in bitlbee and skyped.conf
+
+commit 717c9f04f2dd2faba140a764e439c3876fd05806 (tags/0.3.0~7)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sat Jan 12 02:41:44 2008 +0100
+
+    install the default skyped config
+
+commit 4fcf577ca9d13b36c86f42a6c35d8aea1992d527 (tags/0.3.0~8)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sat Jan 12 02:36:54 2008 +0100
+
+    skyped: add authentication support
+    this is not yet ssl, but better than nothing
+
+commit 17ec625c353806b55e6e8f2751e1dee7f92618d4 (tags/0.3.0~9)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sat Jan 12 02:33:27 2008 +0100
+
+    skype_start_stream(): send username/password to skyped
+
+commit 57525e3245b76324a982b5501f35e7705a1fc4e3 (tags/0.3.0~10)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Fri Jan 11 21:29:28 2008 +0100
+
+    skyped: allow overwriting the host '0.0.0.0'
+
+commit 4b1f8680338b6d0e3228f98e78f90fb9083b10c6 (tags/0.3.0~11)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Thu Jan 10 17:48:39 2008 +0100
+
+    copyright update
+
+commit 6306ff8c0583684a6375fc5abd512ed08cd84ed8 (tags/0.3.0~12)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Thu Jan 10 17:38:51 2008 +0100
+
+    todo update
+
+commit 41c183e8215b20376251dec2575ac2bdfc697b9d (tags/0.2.6)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Thu Jan 10 17:35:25 2008 +0100
+
+    updates for 0.2.6
+
+commit 9e7c93a22b3b98bda671045ac3f3a5ca4df5066f (tags/0.2.6~1)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Thu Jan 10 17:07:51 2008 +0100
+
+    new skype_set_display_name() function
+    - this adds support for setting display_name
+    - also add support for the deprecated nick command in skype_set_my_name()
+
+commit 4c965741fe1da5d1db62a020ec66b34eb47516ff (tags/0.2.6~2)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Thu Jan 10 15:56:31 2008 +0100
+
+    added vim modeline
+
+commit 76c885e49cb2f3cc80570bbfd538ede672f6ebd5 (tags/0.2.6~3)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Thu Jan 10 15:56:24 2008 +0100
+
+    support for receiving emoted messages
+
+commit 43de88219a95192c6c08ef7a1efb5eeaf82fe7f6 (tags/0.2.6~4)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Thu Jan 10 15:42:02 2008 +0100
+
+    skype_init(): cosmetics
+
+commit aca6493e8201925c4a40fc348a496b042fce3527 (tags/0.2.6~5)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Thu Jan 10 15:41:45 2008 +0100
+
+    added default server "localhost"
+
+commit 94e785902062f8afbfc0bc65e718abdc0aca6ea4 (tags/0.2.6~6)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Thu Jan 10 15:11:57 2008 +0100
+
+    rename SKYPE_PORT_DEFAULT to SKYPE_DEFAULT_PORT
+
+commit 053f844797529c8f3e377bd13dceeff20651605b (tags/0.2.6~7)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Tue Dec 18 21:04:55 2007 +0100
+
+    doc update
+    - probably newer python/bitlbee versions work, too
+    - update note about the common dbus session: it should be a common display now
+
+commit f2efe6139a08de4124375071fc25e55ad5c7d334 (tags/0.2.6~8)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sun Dec 16 23:54:36 2007 +0100
+
+    update doc: git url changed
+
+commit a46f7b603c2fe06313c7551fbcd4155c64ca0a2a (tags/0.2.5)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sun Dec 16 23:41:54 2007 +0100
+
+    updates for 0.2.5
+
+commit f2b0db3fe1ba6cc7dd7adf3778dbad5171ca22d1 (tags/0.2.5~1)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sun Dec 16 23:38:27 2007 +0100
+
+    new todo (i think first i need to do it in bitlbee)
+
+commit 65188e39ee1e72a91443494bf5b34b093cc8d70e (tags/0.2.5~2)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sun Dec 16 22:10:02 2007 +0100
+
+    readme: update thanks section
+
+commit c0dc32a6f0bd1d3dd2ba00facfebd7200c410aff (tags/0.2.5~3)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sun Dec 16 22:06:51 2007 +0100
+
+    handle the case when the birthday is unknown
+
+commit cec77f1a30f5a5aa4757a93d4f199e2beee384f0 (tags/0.2.5~4)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sun Dec 16 22:04:10 2007 +0100
+
+    add "local time" info output
+    thanks Cristobal Palmer (tarheelcoxn) for testing :)
+
+commit aba289c47719f0c0c67811f975ea8807f1bf8c46 (tags/0.2.5~5)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sun Dec 16 04:01:40 2007 +0100
+
+    update doc: info is implemented
+    time for a release soon..
+
+commit e8c42dd7a6e368b044cacf0cc1ef961194c505da (tags/0.2.5~6)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sun Dec 16 03:55:37 2007 +0100
+
+    fixed gender output
+    woho, last fixme removed \o/
+
+commit 4c49ca8f3d62b4c3428fd0dbfd33632e17d7cda6 (tags/0.2.5~7)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sun Dec 16 03:51:08 2007 +0100
+
+    fixed age output
+
+commit 45a90ab808b1b3d6a1d2af5b4d83b3cd328ac09b (tags/0.2.5~8)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sun Dec 16 03:43:17 2007 +0100
+
+    fixed birthday output
+
+commit 2273ddda608498e8fc3be8f189e1f4362d530e32 (tags/0.2.5~9)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sun Dec 16 03:36:36 2007 +0100
+
+    typo fix in country output
+
+commit 2b6f1ccead91cbf331413cc9b39b480066afe343 (tags/0.2.5~10)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sun Dec 16 03:36:25 2007 +0100
+
+    format last seen output properly
+
+commit a1cf7380e628fa2664b77e3d112210326c61dec0 (tags/0.2.5~11)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sun Dec 16 03:36:06 2007 +0100
+
+    disable buggy "local time" field
+
+commit 36ba59ab4cb404c625bf6f9b7553adfd48acb7e2 (tags/0.2.5~12)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sun Dec 16 03:11:23 2007 +0100
+
+    fixed country and language format
+
+commit 3c578b613b566b45703600687a224bb4138251d1 (tags/0.2.5~13)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sun Dec 16 03:02:06 2007 +0100
+
+    added much more info output, need to finetune format
+
+commit aae05459111b7e2bd23c347c89a10bda683fba3a (tags/0.2.5~14)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sun Dec 16 02:40:44 2007 +0100
+
+    initial support for the info command
+    currently it prints only the full name
+
+commit 10b71be3baf221c19c2b611af432ac3d313e8766 (tags/0.2.5~15)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sun Dec 16 01:57:07 2007 +0100
+
+    remove hardwired command from client tester
+
+commit 208d349a0b10d77338be31c73cd2d19205aa408a (tags/0.2.5~16)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sun Dec 16 01:55:15 2007 +0100
+
+    convert client.c to py
+    it's for testing purposes only and i hate to recompile it again and again ;)
+
+commit 4c935e24ab6913edc041dc467ef6f351cc21a2db (tags/0.2.5~17)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sat Dec 15 23:24:39 2007 +0100
+
+    i just noticed we don't support the info command
+
+commit cdf0308fcf87e8b5dae7bd75310adc793bd14ef2 (tags/0.2.5~18)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Fri Dec 14 02:37:27 2007 +0100
+
+    added "people on #bitlbee" to the thanks section
+    in fact they again and again reported that newer skype4py does not work, so
+    without them i would not fix it :P
+
+commit 979658559270765061698179d3ff09752ce83ff8 (tags/0.2.5~19)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Fri Dec 14 02:26:43 2007 +0100
+
+    fixed skype4py requirement
+
+commit 70812e651fa79599a2f5231eaeca516da40548dc (tags/0.2.4)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Fri Dec 14 02:14:05 2007 +0100
+
+    updates for 0.2.4
+
+commit 5f94083b2b0bc6345673283b83c4ad12a3612d7b (tags/0.2.4~1)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Fri Dec 14 02:13:21 2007 +0100
+
+    skype2beta tested \o/
+
+commit d5abc26ba8374a93c61e6b0abb302795eaa87b79 (tags/0.2.4~2)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Fri Dec 14 01:59:36 2007 +0100
+
+    fixup for Skype4Py >= 0.9.28.4
+
+commit 8442894d5433a10e6c1b7e6eb7ece5ab91043cf7 (tags/0.2.4~3)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Mon Dec 10 22:42:29 2007 +0100
+
+    note about "you can run git whereever you want"
+    as requested by timing on irc
+
+commit cfa37af1929af475624f6d64c1eab411e6737ba5 (tags/0.2.4~4)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sun Dec 9 22:46:45 2007 +0100
+
+    typo
+
+commit 7281854405c5edc8b0494553d775cc74e8f5773e (tags/0.2.4~5)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sun Dec 9 22:45:35 2007 +0100
+
+    add a note about no patching is required
+    as today a guy asked on #bitlbee if he need a special branch..
+
+commit 5e2b5366c6ceeca5cb77f01678f0ed18c3602fcb (tags/0.2.4~6)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Tue Dec 4 01:23:49 2007 +0100
+
+    README: added a quote, from the closing mail of the skype ticket
+
+commit 94b9c632957bcaefdde96fcd556537e21d4969f9 (tags/0.2.4~7)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Thu Nov 29 12:46:25 2007 +0100
+
+    typo in git url
+
+commit cd7f861b721f4437ff2d241d02658c744fb5a414 (tags/0.2.4~8)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sat Nov 24 20:32:36 2007 +0100
+
+    move the skype api doc link to the resources section
+
+commit 399267141731420ac3b4befb493d8ce38d36a5fb (tags/0.2.4~9)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sat Nov 24 20:32:23 2007 +0100
+
+    do not refer to the empty known bugs section
+
+commit 3fa34c0486254b3caa083cb89dcb04d4bf51d94e (tags/0.2.4~10)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sat Nov 24 20:14:30 2007 +0100
+
+    get rid of bzr, there is a tarball version now that works
+
+commit 74750e4f81dcd04552c80932cbf840983dc74fdd (tags/0.2.4~11)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sat Nov 24 00:58:27 2007 +0100
+
+    improve gitignore
+
+commit 1ac1545c1a07300f513df70dc584d1aed5622344 (tags/0.2.3)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sat Nov 24 00:49:13 2007 +0100
+
+    updates for 0.2.3
+
+commit 494f25ea4185789399e671b4dd24f5b1d0371b72 (tags/0.2.3~1)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sat Nov 24 00:45:43 2007 +0100
+
+    warning fix in skype_chat_with()
+    fix "when you start a group chat, a warning is shown saying creating the
+    group chat is failed, but in fact it is created"
+
+commit 9830ad41c708e6427eadb410feb998d3a3a87e94 (tags/0.2.3~2)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Tue Nov 20 18:41:41 2007 +0100
+
+    link my projects page
+
+commit 09d90aa37df062137c3c8de596bdb13d63f49d5a (tags/0.2.3~3)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Tue Nov 20 17:28:49 2007 +0100
+
+    fix gitweb url
+
+commit 5b6ec2eeb201ba6cbf202baee28c19225e42caa6 (tags/0.2.3~4)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Tue Nov 20 17:22:38 2007 +0100
+
+    less frugalware references
+
+commit f10712f77c5bcd9567dddc2440065a0237038686 (tags/0.2.2)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Tue Nov 20 10:55:35 2007 +0100
+
+    updates for 0.2.2
+
+commit 6b7b527939c4bb1456dc2dc1576a8dbca833b8a5 (tags/0.2.2~1)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Tue Nov 20 10:54:22 2007 +0100
+
+    doc update: no patching needed again, but a recent snapshot
+
+commit ab84dab50cbb8d5bd5b1cebb26f34edc50e36cb3 (tags/0.2.2~2)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Tue Nov 20 10:47:43 2007 +0100
+
+    fixes for the recent upstream API changes
+
+commit b4da07866a7bd6ea320e7bd45b234ba108bf4656 (tags/0.2.2~3)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Tue Nov 20 10:46:35 2007 +0100
+
+    if you change the topic then wait for skype to confirm that it was really changed
+    - ie if you don't have enough permissions, you won't see a fake topic
+    - suggested by wilmer
+
+commit 6058f930e716741ad9db51fe253b37ba5a831904 (tags/0.2.2~4)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Thu Nov 15 15:24:40 2007 +0100
+
+    doc: deepcommand on how to apply the patch
+    http://bugs.bitlbee.org/bitlbee/ticket/82#comment:31 - it seems it's good to
+    mention this
+
+commit c91b1775ae5e5889de46372c1cd2084e66c6e45f (tags/0.2.2~5)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sun Nov 11 21:00:48 2007 +0100
+
+    doc: patch is for bitlbee, not the plugin
+
+commit 32ac23e2a5d2881e712b0bbf6971f2d7dcccccf5 (tags/0.2.1)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Tue Oct 30 15:26:07 2007 +0100
+
+    updates for 0.2.1
+
+commit 89ff6c720c1d65a5192eb831bfc324c885bc2a76 (tags/0.2.1~1)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Tue Oct 30 15:24:56 2007 +0100
+
+    update documentation for 0.2.1
+
+commit 118bd2d55f5b0c0df79953d884941b160f8c03c5 (tags/0.2.1~2)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Mon Oct 29 12:35:52 2007 +0100
+
+    check out the latest tag before compiling, HEAD won't compile with latest bitlbee
+
+commit eb563b8bdd4fa27232cf1c171284f73cf4f56947 (tags/0.2.1~3)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Fri Oct 26 21:30:10 2007 +0200
+
+    doc update: it is now tested under Windows, too
+
+commit e0afd6dfb573c653c1ff897dd633ab838c438812 (tags/0.2.1~4)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Fri Oct 26 16:02:45 2007 +0200
+
+    README: update "thanks to" section
+
+commit 722693ea3c71a36c0819901a0384cfbf64dd6422 (tags/0.2.1~5)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Thu Oct 18 01:01:07 2007 +0200
+
+    docu update about /topic
+
+commit 41a0c40fc343e0ee358d20cf7ba9d08df9257912 (tags/0.2.1~6)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Thu Oct 18 00:59:41 2007 +0200
+
+    fix incoming multiline messages - again
+    i broke it when adding groupchat support
+
+commit 2c254deb01726a63f7e8200857379286f91c3f18 (tags/0.2.1~7)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Wed Oct 17 02:46:38 2007 +0200
+
+    show topic if it was set before join
+
+commit 81c0109193792109565477307c0db6c03aa0bc98 (tags/0.2.1~8)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Wed Oct 17 01:09:22 2007 +0200
+
+    implement skype_chat_topic()
+
+commit 425c86905075ca2cc6d988ea31e7ad202ea81b39 (tags/0.2.1~9)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Wed Oct 17 01:09:09 2007 +0200
+
+    use the new imcb_chat_topic() function
+    WARNING: this is not yet in the bitlbee release branch, i'll update the docs
+    when it'll be there
+
+commit 3adf6cb8a2387729369248f3e4e45d89b8155858 (tags/0.2.1~10)
+Author: Miklos Vajna <vmiklos@frugalware.org>
+Date:   Sun Oct 14 01:12:56 2007 +0200
+
+    doc: update about group/public chats
+
+commit 12e97750a28468200dced16ef70bd9262a015337 (tags/0.2.0)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Sun Oct 7 22:56:17 2007 +0200
+
+    updates for 0.2.0
+
+commit 0452458343f0357d4e09ec0f8cb2475ae0d7ccd1 (tags/0.2.0~1)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Sun Oct 7 17:13:32 2007 +0200
+
+    update docu for skype-1.4.0.118
+
+commit ed2a123476ecf18d1f89071f40214e6fadbcef2b (tags/0.2.0~2)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Sun Oct 7 16:37:34 2007 +0200
+
+    docu update for recent changes
+
+commit 58b8a06b05415e797d07922abe8707de505c458e (tags/0.2.0~3)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Sun Oct 7 16:36:03 2007 +0200
+
+    implement skype_chat_with()
+    so that '/j #nick' is possible: we can start a group chat now, too
+
+commit 344445136a45cbedb50e366415aa0c4a115e9997 (tags/0.2.0~4)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Sun Oct 7 04:00:52 2007 +0200
+
+    update documentation
+
+commit de45b5665d15cafd7c70bb05bef204225d7b573e (tags/0.2.0~5)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Sun Oct 7 03:55:46 2007 +0200
+
+    implemented skype_chat_invite()
+
+commit 649f451a075db3d43b5d1292b992e6f94e7fd3f6 (tags/0.2.0~6)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Sun Oct 7 03:55:17 2007 +0200
+
+    skype_read_callback(): sanity check
+
+commit e5c8f1cc5531f787ac5ac80098ea1da7ce39653f (tags/0.2.0~7)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Sun Oct 7 03:06:22 2007 +0200
+
+    fix unwanted rejoin after /part
+
+commit d5f0b024bc37cde407a8b1aa797c5c9bbcec38ff (tags/0.2.0~8)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Sun Oct 7 02:27:28 2007 +0200
+
+    avoid nicks joining to a group chat multiple times
+
+commit fe8a2a5e024aaebae71b5df16abdc0d0925092fd (tags/0.2.0~9)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Sun Oct 7 01:38:49 2007 +0200
+
+    implemented skype_chat_leave()
+
+commit bf7b46d529cb8a6598d595da8011d075db4ca10e (tags/0.2.0~10)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Sun Oct 7 01:12:09 2007 +0200
+
+    handle parts in groupchats
+
+commit 19c8e11ab504e43806ddb7b4e11f10d0dada0f63 (tags/0.2.0~11)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Sun Oct 7 00:23:49 2007 +0200
+
+    handle the topic changes in group chats correctly
+
+commit 26661af76a03444d0a83264f0b4f4f29edc3c039 (tags/0.2.0~12)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Sat Oct 6 22:53:32 2007 +0200
+
+    fix agressive groupchat mechanism
+    since 55f2d43, a groupchat was created even for 2 people. this is wrong. we
+    should not create a group chat when receiving an ACTIVEMEMBERS, only when the
+    CHAT's TYPE is MULTICHAT
+
+commit 4309521c2d10e28e7bdca1762c0d62bf6d60098b (tags/0.2.0~13)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Sat Oct 6 22:44:31 2007 +0200
+
+    implement skype_chat_msg()
+    now sending groupchat messages works, too :)
+
+commit 56aa8056f13d08057aba9c706e0a60bd07831fb6 (tags/0.2.0~14)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Sat Oct 6 22:44:00 2007 +0200
+
+    remove debug printfs
+
+commit 55f2d43694055f47fb5f4eac00a4a7ca25ac3b80 (tags/0.2.0~15)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Sat Oct 6 22:28:44 2007 +0200
+
+    receiving group chat messages now works
+    it's a bit agressive. dialogs are not group chats, but i'll fix it later
+
+commit f3263711b005b91eac7353dfa3b59da556115f51 (tags/0.2.0~16)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Sat Oct 6 22:06:14 2007 +0200
+
+    don't mark messages as seen
+    - they still spams the skype client
+    - unnecessary transfer then
+
+commit 8ad7605b6999100d19fb5e0d5b2de98715807815 (tags/0.2.0~17)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Sat Oct 6 22:03:49 2007 +0200
+
+    revert "handle topic changes"
+    - this reverts commit b2d9bfa54753bcf0c617cc515d08f0ac46c1d65e (tags/0.2.0~20).
+    - the proper way will be to query the type of a CHATMESSAGE object, and if it's
+    SETTOPIC, then do the same
+
+commit f3dd0d05b317fda1016317493b6fd2db2b12211b (tags/0.2.0~18)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Sat Oct 6 21:59:58 2007 +0200
+
+    new dummy skype_chat_msg() function
+
+commit 18c4dc21267adc8949210d793937f2ca4c872a3e (tags/0.2.0~19)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Sat Oct 6 21:20:12 2007 +0200
+
+    initial groupchat support
+    read: we detect that we are invited we retreive the nicklist but we can't
+    receive/send messages yet
+
+commit b2d9bfa54753bcf0c617cc515d08f0ac46c1d65e (tags/0.2.0~20)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Sat Oct 6 18:05:44 2007 +0200
+
+    handle topic changes
+
+commit 24cd60dd1e64ed8648a910012a8283cc0904037a (tags/0.2.0~21)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Sat Oct 6 17:35:55 2007 +0200
+
+    display received messages in utf8, so that we can avoid most UnicodeEncodeErrors
+
+commit c982f1158bc9f07f2f4b97bd20bbc1a47d9416b9 (tags/0.2.0~22)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Sat Oct 6 17:25:21 2007 +0200
+
+    handle the case when ping fails (ie: timeout)
+
+commit 7783bf47d9c1b0a315e6a4212d51549eae0b6b42 (tags/0.2.0~23)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Sat Oct 6 17:16:06 2007 +0200
+
+    notification when somebody wants to transfer a file
+
+commit 963b4f21f7ae784c6688339d3bc7ab1816cc84ec (tags/0.2.0~24)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Sat Oct 6 16:46:59 2007 +0200
+
+    readme: skype4py 0.9.28.4 has some incompatible changes, mention this
+    also correct an outdated comment about dbus
+
+commit 9bd6996263deba9fe5fe6d8a141cdabbce3334a8 (tags/0.2.0~25)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Wed Oct 3 21:05:43 2007 +0200
+
+    update group chat status
+    to be honest, today i had to use skype group chat and it was very annoying to
+    use the original skype client for that. so yes, now i plan to add more or less
+    support for it. we'll see. i hope i'll have time for it :)
+
+commit 68f82e277e0a28fa15c31ddb8e547026becbbaff (tags/0.2.0~26)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Mon Sep 24 20:36:42 2007 +0200
+
+    README: link gitweb
+
+commit a7f262ee582a174578885bbb8a07bfa8a8bf9f21 (tags/0.2.0~28)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Mon Sep 24 20:31:39 2007 +0200
+
+    README: spelling fixes
+
+commit ee99c4933cd4418244d28275c289878c10a60e3c (tags/0.2.0~27^2)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Fri Sep 21 16:16:48 2007 +0200
+
+    skype_data struct: some more comments
+    also renmae r_inpa to bfd
+
+commit d056e6738597cc05fb418773c06cd482f7f30bb2 (tags/0.1.4)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Sun Sep 16 00:26:41 2007 +0200
+
+    updates for 0.1.4
+
+commit f59a39df11cd64e672b7ceecf90aad237caa4574 (tags/0.1.4~1)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Wed Sep 12 00:11:04 2007 +0200
+
+    skyped: handle a possible IOError
+
+commit 7b1ed629b01befd889987d2f0daa6bbb3bebe694 (tags/0.1.4~2)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Fri Sep 7 18:29:03 2007 +0200
+
+    flame about skype memleaks
+
+commit a527817f655ef5b52748bf3c25b0f5da34e60e1f (tags/0.1.4~3)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Wed Sep 5 21:18:23 2007 +0200
+
+    add a 'thanks' list
+
+commit 9c89c6719c4fc9c6cae35f33db64fbef672a3f7e (tags/0.1.4~4)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Wed Sep 5 20:11:28 2007 +0200
+
+    don't use internal exceptions either
+
+commit ed715989e06c77fcbd3e55d511287897c0a69c6c (tags/0.1.4~5)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Wed Sep 5 20:04:04 2007 +0200
+
+    do not use internal functions for receiving messages
+    thanks awahlig
+
+commit ab1b7a2ca8fe7f45cd0082517c6a3e5ce81e7374 (tags/0.1.4~6)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Wed Sep 5 20:01:15 2007 +0200
+
+    do not use internal functions for sending messages
+    thanks awahlig (from the skype forums) for this suggestion
+
+commit 69f13403f032546e74100be371c0fa0e7673b9b1 (tags/0.1.4~7)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Wed Sep 5 16:40:09 2007 +0200
+
+    users should try git before reporting bugs
+
+commit 4e1c0050d33c71b53028254cb3161d6b741879c2 (tags/0.1.4~8)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Wed Sep 5 16:34:30 2007 +0200
+
+    README: a note about why a skype instance is still required
+
+commit 883fc51641223ce05d8c1cd9bf9d3d89d5a3ee63 (tags/0.1.4~9)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Tue Sep 4 22:20:51 2007 +0200
+
+    hide the ping/pong from the log, it's just spam
+    also set the ping timeout to 2sec, it does not cause a big cpu load but this
+    way skyped is much more interactive
+
+commit 102215a89a73d44d8cb848f8910f4ffaa3d4f859 (tags/0.1.4~10)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Tue Sep 4 21:51:21 2007 +0200
+
+    add a new 'requirements' section
+
+commit 78d6889cf11cff40208010cff8579b9cb6f0b845 (tags/0.1.4~11)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Tue Sep 4 21:34:26 2007 +0200
+
+    remove hardwired paths
+
+commit 7a50df7766373ff24fbc642cd3cc4714e9611d67 (tags/0.1.4~12)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Tue Sep 4 21:30:52 2007 +0200
+
+    install skyped to bindir, not to sbindir
+
+commit 46764d6b167c86d9e919851959bd52646915f884 (tags/0.1.4~13)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Tue Sep 4 21:29:42 2007 +0200
+
+    skyped: fix receiving / sending accents again
+
+commit cfab96e6e6e63ef421341d20e6a57f9f4a74902b (tags/0.1.4~14)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Tue Sep 4 21:07:31 2007 +0200
+
+    handle timeouts
+
+commit 2c0aeaf2075ed0894f3828e757f9507119c195f4 (tags/0.1.4~15)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Tue Sep 4 20:48:47 2007 +0200
+
+    mention the tested skype version
+
+commit 35bd87da5132e83ffcc425066d9a08f2c9e6df73 (tags/0.1.3)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Tue Sep 4 19:05:56 2007 +0200
+
+    updates for 0.1.3
+
+commit dd4ba3cc970dfcaf8caabc2982fdbcc8bc827079 (tags/0.1.3~1)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Tue Sep 4 18:59:28 2007 +0200
+
+    skyped: use Skype4Py's X11 api
+    this solves all those weird freezes
+
+commit 649d587ab59a079c7f448619d78e7f266128bc9d (tags/0.1.3~2)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Tue Sep 4 00:30:15 2007 +0200
+
+    support for edited messages
+
+commit 0603dacc868a308315e015395bba1031d250f8d7 (tags/0.1.3~3)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Tue Sep 4 00:25:57 2007 +0200
+
+    update TODO
+
+commit 737ca91fac43048b0531cc4bc6cc8c34164845d3 (tags/0.1.3~4)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Tue Sep 4 00:22:55 2007 +0200
+
+    handle the case when the input is a multiline message
+
+commit 61fed1170d5ff0498a44656760a30586089eb0a4 (tags/0.1.3~5)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Mon Sep 3 23:09:34 2007 +0200
+
+    HACKING: update
+
+commit 8e3b45cb1cc97f3ebf4f7374b065aeb10bb1d086 (tags/0.1.3~7)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Mon Sep 3 14:57:26 2007 +0200
+
+    skype_read_callback(): ignore empty messages
+    skype itself does the same
+
+commit 6ad323b641ab6e47b6aa5be59583f32222ec5aa4 (tags/0.1.3~6^2)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Sun Sep 2 00:24:17 2007 +0200
+
+    use permalinks
+
+commit 3477aeff996aadabc3ee0b30467de926878a966d (tags/0.1.2)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Fri Aug 31 00:56:17 2007 +0200
+
+    updates for 0.1.2
+
+commit 1a6e594ac702869f95747e228c840abc58fed2bc (tags/0.1.2~1)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Fri Aug 31 00:48:33 2007 +0200
+
+    README: no more patches are required, wilmer merged them :)
+
+commit 1c03e4e41e7c6ef0e4973262332962778e551ab0 (tags/0.1.2~2)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Wed Aug 29 16:30:12 2007 +0200
+
+    one more idea
+
+commit fc24eee3368f8e829faf405eb0958095805dcd91 (tags/0.1.2~3)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Wed Aug 29 16:23:59 2007 +0200
+
+    two new ideas
+
+commit 67199067021e58ce2b1e40214161d4f865748512 (tags/0.1.2~4)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Wed Aug 22 19:46:48 2007 +0200
+
+    add group chat to TODO
+
+commit 736419a63e385c2878ccbfee1aa7cb327b9f4b6a (tags/0.1.2~5)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Wed Aug 22 19:44:54 2007 +0200
+
+    mention the tarballs
+
+commit 4bcb517bda3a034e0514d7c6fb49c1ce48628c0c (tags/0.1.2~6)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Wed Aug 22 19:39:17 2007 +0200
+
+    bind to 0.0.0.0, not to localhost
+
+commit a8f94501f039d6f4c11369533551e965defcf2f3 (tags/0.1.2~7)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Wed Aug 22 19:35:09 2007 +0200
+
+    send a notice when a call is missed
+
+commit 62f3950a2054b8cd6cc8b3885c7a8707155d1dae (tags/0.1.2~8)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Wed Aug 22 18:21:13 2007 +0200
+
+    fix repo url
+
+commit ce8d9aacac3e41fb045c3f48f8a6806e8077ae53 (tags/0.1.2~9)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Wed Aug 22 18:12:28 2007 +0200
+
+    skype_read_callback(): add notification about calls
+
+commit 117370855b48d8e72afaf8f66bbf99270137a6c3 (tags/0.1.2~10)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Wed Aug 22 02:25:25 2007 +0200
+
+    oops, missing chmod +x
+
+commit e689740bedbdd03d17680c76cbd6f85621b956fb (tags/0.1.2~12)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Wed Aug 22 02:22:52 2007 +0200
+
+    document the vnc server setup
+
+commit e710323cb63a935b2dc8b5b70d258d81a8b9bd27 (tags/0.1.2~11^2)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Wed Aug 22 01:40:06 2007 +0200
+
+    add a .gitignore
+
+commit 36ec449cbacd9d62f3edb3f7e4fdc3985c90d13c (tags/0.1.1)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Wed Aug 22 01:24:19 2007 +0200
+
+    updates for 0.1.1
+
+commit 5a716a5ce1fad5fa9526b3c7a1b6259188969b6e (tags/0.1.1~1)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Wed Aug 22 00:52:53 2007 +0200
+
+    skyped: fix a warning
+
+commit c672e9a10a5503c293c32ecfbf9cb37407b61e6c (tags/0.1.1~2)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Wed Aug 22 00:33:14 2007 +0200
+
+    skyped: added daemon code
+
+commit 506c666c3983a561afed88c3f15f0b46b1bab487 (tags/0.1.1~3)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Wed Aug 22 00:07:39 2007 +0200
+
+    import NEWS
+
+commit 078c9bdaeb7fe821ce5fbfa6387f243909b426b4 (tags/0.1.1~4)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Tue Aug 21 23:42:33 2007 +0200
+
+    document 3db5410
+
+commit 3db54100427b06db7e8253f7b70320c76c9a3a22 (tags/0.1.1~5)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Tue Aug 21 23:37:43 2007 +0200
+
+    skyped: automatically reconnect if skype is restarted
+    well, not 100% perfect because we detect the error when we send something. but
+    far better than writing to devnull forever ;)
+
+commit 50393970be5238df6c9cf7f9f9e21e50bfe577d1 (tags/0.1.1~6)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Tue Aug 21 21:20:16 2007 +0200
+
+    more todo
+
+commit f2019e8e81a9454e53692365d7b00646ca70de51 (tags/0.1.1~7)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Tue Aug 21 21:17:08 2007 +0200
+
+    mention the fpms
+
+commit 8a7a79538cd3e57e2783b61a293b233e6e5b98f8 (tags/0.1.0)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Tue Aug 21 21:12:00 2007 +0200
+
+    erm, now really
+
+commit 4190e96102a79da8c6093a860c6382eadf43e844 (tags/0.1.0~1)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Tue Aug 21 21:09:47 2007 +0200
+
+    fix dist target
+
+commit c964654d9957fa7485b6e0df59405caeb33ad156 (tags/0.1.0~2)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Tue Aug 21 21:04:13 2007 +0200
+
+    do not more the generated tarball/signature
+
+commit 7fd01ee3ef53115077615e7ca4d1905ee9e2fbb1 (tags/0.1.0~3)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Tue Aug 21 21:02:55 2007 +0200
+
+    update changelog target to include tags
+
+commit 7348bd2bbb72d4255701c15703a09682b664c795 (tags/0.1.0~4)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Tue Aug 21 21:01:49 2007 +0200
+
+    added new dist and release targets
+
+commit 1c47d1adc76ab72ca6ee3ca21b74366b39c1c4d6 (tags/0.1.0~5)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Tue Aug 21 20:55:32 2007 +0200
+
+    make install installs skyped
+
+commit d0a74226d77740bf934b502ccfb8194cd96dc5e6 (tags/0.1.0~6)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Tue Aug 21 20:51:55 2007 +0200
+
+    update documentation for buildsystem changes
+
+commit 16498723df48ca77b88a79bbd7cbadd841ca947f (tags/0.1.0~7)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Tue Aug 21 20:50:09 2007 +0200
+
+    added an install target
+
+commit d8f362560bab7d39cca1d77db42880a29ce9a891 (tags/0.1.0~8)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Tue Aug 21 20:46:37 2007 +0200
+
+    import configure.ac and config.mak.in
+
+commit 5ceb3cb70009e412e72acf8f96e541d05e1f3758 (tags/0.1.0~9)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Tue Aug 21 20:46:27 2007 +0200
+
+    new prepare and distclean targets
+
+commit abbb5d5ece1fffbf35a6566e0d792a7be0c25e2d (tags/0.1.0~10)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Tue Aug 21 20:20:59 2007 +0200
+
+    add a simple skyped client for testing purposes
+
+commit 1d2141c63bb2a42efe5b7692b117e0d52588c89f (tags/0.1.0~11)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Tue Aug 21 20:18:08 2007 +0200
+
+    skyped: added copyright header
+
+commit 0483c7206af311aabc399823a57b255854837ec8 (tags/0.1.0~12)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Tue Aug 21 20:12:37 2007 +0200
+
+    HACKING
+
+commit d94dc78a3d834d70af370f4d15c23aac4fa4f9ef (tags/0.1.0~13)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Tue Aug 21 19:51:06 2007 +0200
+
+    link the api docs
+
+commit 672fd4ed7de6c656cd46a824e8a33b3f7323c13f (tags/0.1.0~14)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Tue Aug 21 19:46:40 2007 +0200
+
+    cleanup in struct skype_data
+
+commit 39f74b3290da64415906911c8cbfa00ede2700e2 (tags/0.1.0~15)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Tue Aug 21 19:45:17 2007 +0200
+
+    typo
+
+commit 70ff4adb583f207ab41cb4da7d8fca438d9f425f (tags/0.1.0~16)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Tue Aug 21 19:44:38 2007 +0200
+
+    preface
+
+commit 3c7b0b1d0fe5a08807d4434628ffb5f7ade60f21 (tags/0.1.0~17)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Tue Aug 21 19:39:43 2007 +0200
+
+    mention a bit more patches
+
+commit 166233c14bce3911a072723ecf43e5523e84db9f (tags/0.1.0~18)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Tue Aug 21 19:02:11 2007 +0200
+
+    cosmetics
+    - add copyright header
+    - beautify comments
+    - remove debug printf()s
+
+commit 431db4148f9eae4e0327e7b3b6bcd6ce4cb383a0 (tags/0.1.0~19)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Tue Aug 21 18:39:07 2007 +0200
+
+    block/allow commands needs 0 protocl-specific implementation ;)
+
+commit 4be00f5bb76615c872cdafb98d53964078a45fde (tags/0.1.0~20)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Tue Aug 21 16:17:33 2007 +0200
+
+    remove question about imcb_remove_buddy()
+    quoting jabber/iq.c:
+    /* Don't have any API call for this yet! So let's
+    just try to handle this as well as we can. */
+    and we already do this (setting userstatus to offline)
+
+commit 4ad1ff074f039530c60882df4f5bc42decd2e582 (tags/0.1.0~21)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Tue Aug 21 16:10:25 2007 +0200
+
+    implement skype_buddy_ask()
+
+commit 97264a405e7b7d4adbccbf601d14579c20cf0a61 (tags/0.1.0~22)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Tue Aug 21 00:56:56 2007 +0200
+
+    move the poll() usage to skype_write()
+
+commit e1f05b2b01b23843e370047f269e598818149fc1 (tags/0.1.0~23)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Tue Aug 21 00:51:59 2007 +0200
+
+    new ideas: block/allow
+
+commit bd8500a2138d3589222af372e7e1ff9e464e1ed2 (tags/0.1.0~24)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Tue Aug 21 00:38:06 2007 +0200
+
+    use SET USERSTATUS on login/logout
+
+commit b0b7c575d420c07077311c993920afdd2e2c0230 (tags/0.1.0~25)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Tue Aug 21 00:37:17 2007 +0200
+
+    prevent a segfault in skype_read_callback()
+
+commit ff6e9ce205fd93d06fa1d413da253bec94c4c580 (tags/0.1.0~26)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Tue Aug 21 00:00:16 2007 +0200
+
+    implement skype_set_away()
+
+commit 7833493760c58e0a276e2277e9307ed97ef004e8 (tags/0.1.0~27)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Mon Aug 20 23:27:52 2007 +0200
+
+    known bugs
+
+commit 1d247f57b8410bb913db6e31652550a34378f518 (tags/0.1.0~28)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Mon Aug 20 23:14:52 2007 +0200
+
+    g_strdup_printf("%s" -> g_strdup(
+
+commit c0d5e4d5e898f0e2f786f25c881816ed54d49742 (tags/0.1.0~29)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Mon Aug 20 22:59:58 2007 +0200
+
+    more docs
+
+commit 10d9a43d47af5893d84253cb8d9b5d5889b6ee6a (tags/0.1.0~30)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Mon Aug 20 22:58:45 2007 +0200
+
+    implement add/removing contacts
+
+commit b47c21750a1a8711cca1f65699671b21d0a3df58 (tags/0.1.0~31)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Mon Aug 20 21:49:00 2007 +0200
+
+    link the changelog
+
+commit 74473a081a8a355d4b25950ced8ede9084172c4b (tags/0.1.0~32)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Mon Aug 20 21:47:13 2007 +0200
+
+    add a changelog
+
+commit 7a726bc9e6cc9e524f2d3871f514791f773b637e (tags/0.1.0~33)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Mon Aug 20 21:45:05 2007 +0200
+
+    ignore test user echo123
+
+commit e356ac2f4eeb94da93d8236c88fb03e8e5b857a2 (tags/0.1.0~34)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Mon Aug 20 21:43:11 2007 +0200
+
+    register skype_set_away()
+
+commit e7002821a003ce2f0e78f7416d1f8c81c055c426 (tags/0.1.0~35)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Mon Aug 20 21:43:03 2007 +0200
+
+    no idea how to set states
+
+commit fe3e3eddb488cd03b36a28adc0c8f94bde61678b (tags/0.1.0~36)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Mon Aug 20 20:56:46 2007 +0200
+
+    skyped: some cleanup, no encoding is needed when sending messages
+
+commit 981832ccb47142d357ca255c2eaaab5729a608bf (tags/0.1.0~37)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Mon Aug 20 20:50:25 2007 +0200
+
+    mark received messages as read so that skype won't say there are unread messages
+
+commit 4fa9bc6fb00923e25cf36d810c010830b6520bc6 (tags/0.1.0~38)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Mon Aug 20 19:37:56 2007 +0200
+
+    receiving away status changes done
+
+commit 1574a803a80487327f4e380ff759884cc225753c (tags/0.1.0~39)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Mon Aug 20 19:28:19 2007 +0200
+
+    more docs
+
+commit 3cd5f8702f25f6f57a5ad0bb49c84ac42de06094 (tags/0.1.0~40)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Mon Aug 20 19:26:00 2007 +0200
+
+    todo: when someone removes us, we just will see that he/she is offline, no need to handle this
+
+commit 29e700b090fa1bf46af5b7eac97dec4f49352ce0 (tags/0.1.0~41)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Mon Aug 20 19:25:32 2007 +0200
+
+    bugfix: we can't join to &bitlbee twice
+
+commit 40b84780334991cdc216bb722bf81fb480bf8287 (tags/0.1.0~42)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Mon Aug 20 19:13:24 2007 +0200
+
+    todo update
+    Noticing joins / parts while we're connected implemented
+    in fact i did this implicitly ;)
+
+commit 7edc09fa29dfb640ef690a8ff1041b4cf4ed75d7 (tags/0.1.0~43)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Mon Aug 20 19:12:23 2007 +0200
+
+    doc about how to add your account
+
+commit 34f2c456eac55d05c1e9cf75314eaa7968237af7 (tags/0.1.0~44)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Mon Aug 20 18:55:31 2007 +0200
+
+    minor doc fixes
+
+commit 67a1c9b25215c65a9b9c195b5d60c503c72a0868 (tags/0.1.0~45)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Mon Aug 20 18:49:35 2007 +0200
+
+    build the doc only if it's updated
+
+commit 2dbc3364b2d50f36feb66f5ed8747e3030e6eaa0 (tags/0.1.0~46)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Mon Aug 20 18:45:05 2007 +0200
+
+    converted README to asciidoc
+
+commit 3dea8cc0cad1b519e3f8de0d1a96682352b28f34 (tags/0.1.0~47)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Mon Aug 20 18:35:48 2007 +0200
+
+    more error handling, no more SIGPIPE \o/ :)
+
+commit 1d004246553e75b030bec5e60e5c7e8681db5253 (tags/0.1.0~48)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Mon Aug 20 16:53:05 2007 +0200
+
+    document how to start the daemon
+
+commit ded005af824b4e4450be3bacec8cfb693276d2cd (tags/0.1.0~49)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Mon Aug 20 16:50:50 2007 +0200
+
+    skyped: finish cleanup
+    hopefully no later cosmetics changes will be necessary now
+
+commit 94e723d79a83adb2d30cce9fc6e55644f68b63cf (tags/0.1.0~50)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Mon Aug 20 16:26:05 2007 +0200
+
+    skyped: use tabs
+    bitlbee uses tabs, too
+
+commit d983700be694badea669cf081d7ef57b6a76434f (tags/0.1.0~51)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Mon Aug 20 16:13:04 2007 +0200
+
+    bitlbeed -> skyped
+    i was crazy when i imported the daemon as bitlbeed..
+
+commit 22c07e199eeeaa611e191d93c4917c3f08fa0da7 (tags/0.1.0~52)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Mon Aug 20 16:12:32 2007 +0200
+
+    bitlbeed: some cleanup
+
+commit 9fa0aa1e6640ab14fc4c2cbf83edac4232a5f09c (tags/0.1.0~53)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Mon Aug 20 16:01:18 2007 +0200
+
+    bitlbeed: import
+    the code is from http://forum.skype.com/viewtopic.php?t=42640
+    (NOTE: i don't know how wrote it, i did not remove his name..)
+    i tried to add as less modicications as possible, so it needs a big cleanup
+
+commit ddeb20692864a6e2c5dfef05d5dc6699c078d053 (tags/0.1.0~54)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Mon Aug 20 15:57:13 2007 +0200
+
+    and even more
+
+commit 46d4edf359a714d1d74e0708e18f3f437de02803 (tags/0.1.0~55)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Mon Aug 20 15:54:26 2007 +0200
+
+    more todo
+
+commit 5c9f1325fff8d524c217ff09719646e2857dd673 (tags/0.1.0~56)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Mon Aug 20 15:53:22 2007 +0200
+
+    README: some more docs, still incomplete
+
+commit 66e1524ac112a8feb87886026c2ffdcb8bf58279 (tags/0.1.0~57)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Mon Aug 20 06:07:16 2007 +0200
+
+    README: update
+
+commit ebefc1d33f640100968d37bbb00a4f74edb07b6c (tags/0.1.0~58)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Mon Aug 20 06:05:51 2007 +0200
+
+    support receiving messages
+
+commit f9ae6477d32321c3a12c063a030a0e60a8775fdf (tags/0.1.0~59)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Mon Aug 20 03:50:57 2007 +0200
+
+    skype_buddy_msg(): add a missing check
+
+commit 673bbb57bf92365980657e7f44ed86160bfb4055 (tags/0.1.0~60)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Mon Aug 20 03:49:06 2007 +0200
+
+    implement skype_buddy_msg()
+
+commit f02b2408d67a8c96294b56697b380aa255ad0085 (tags/0.1.0~61)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Sun Aug 19 19:39:37 2007 +0200
+
+    README: cleanup
+
+commit db644a12cd43e04aa909d40db8f296afe2bbc6fb (tags/0.1.0~62)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Sun Aug 19 19:35:34 2007 +0200
+
+    download away statuses
+
+commit 4b97a2dd9f15c57ffdfa19f5bbaf4f9237f6028f (tags/0.1.0~63)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Sun Aug 19 17:54:24 2007 +0200
+
+    README: add link
+
+commit 51922872c7613fb175638dc330b60f08f8e8b915 (tags/0.1.0~64)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Sun Aug 19 17:52:55 2007 +0200
+
+    README: add
+
+commit d9e4f49d3e0a74add0e1685476fc7623f0dc2341 (tags/0.1.0~65)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Sun Aug 19 17:50:22 2007 +0200
+
+    add offline users, too
+
+commit 5428af3bdfbc9dc6445fb74336068e6d3a3a8317 (tags/0.1.0~66)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Sun Aug 19 17:43:14 2007 +0200
+
+    download buddies from the server
+    also remove write queues. i took them from the jabber module and they seem to
+    be a bit unnecessary for skype
+
+commit 94798168eb58108855477bc7dadf90355075a185 (tags/0.1.0~67)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Sun Aug 19 15:57:32 2007 +0200
+
+    basic read functions
+
+commit 87b39f881502fc02a6b47b25f2075dba1bfb8bb7 (tags/0.1.0~68)
+Author: VMiklos <vmiklos@frugalware.org>
+Date:   Sun Aug 19 15:37:45 2007 +0200
+
+    initial commit
